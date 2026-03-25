@@ -1,0 +1,18 @@
+{
+  "name": "slidev",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-pages.mjs",
+    "dev": "slidev slides.md --open",
+    "export": "slidev export slides.md",
+    "slide-map": "node scripts/generate-slide-map.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.12.0",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "slidev-theme-unicorn": "^1.1.2",
+    "vue": "^3.5.27"
+  }
+}

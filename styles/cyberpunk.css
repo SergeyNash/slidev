@@ -1,0 +1,2698 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes neon-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.3), 0 0 20px rgba(0, 212, 255, 0.1); }
+  50% { box-shadow: 0 0 16px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.15); }
+}
+
+@keyframes grid-fade {
+  0%, 100% { opacity: 0.68; }
+  50% { opacity: 1; }
+}
+
+/* контентные слайды: едва заметнее базовой сетки, длинный цикл */
+@keyframes grid-fade-subtle {
+  0%, 100% { opacity: 0.88; }
+  50% { opacity: 1; }
+}
+
+@keyframes section-frame-glow {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 0 rgba(0, 212, 255, 0.2),
+      inset 0 -1px 0 rgba(191, 90, 242, 0.14),
+      inset 0 0 100px rgba(0, 212, 255, 0.045);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(0, 212, 255, 0.42),
+      inset 0 -1px 0 rgba(191, 90, 242, 0.28),
+      inset 0 0 120px rgba(0, 212, 255, 0.08);
+  }
+}
+
+@keyframes hero-line-sheen {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes cover-provocative-drift {
+  0%, 100% { transform: scale(1.02) translate3d(0, 0, 0); }
+  50% { transform: scale(1.06) translate3d(0.4%, -0.8%, 0); }
+}
+
+@keyframes cover-provocative-glow {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes cover-provocative-bg-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cover-provocative-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-50% + 22px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes section-h1-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes section-h1-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 12px rgba(0, 212, 255, 0.5),
+      0 0 32px rgba(0, 212, 255, 0.2),
+      0 0 48px rgba(191, 90, 242, 0.08);
+  }
+  50% {
+    text-shadow:
+      0 0 18px rgba(0, 212, 255, 0.95),
+      0 0 48px rgba(0, 212, 255, 0.42),
+      0 0 72px rgba(191, 90, 242, 0.18);
+  }
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(0, 212, 255, 0.14), 0 0 14px rgba(0, 212, 255, 0.07);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.22), 0 0 26px rgba(0, 212, 255, 0.12);
+  }
+}
+
+@keyframes section-p-in {
+  from {
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+:root {
+  --bg-0: #04080f;
+  --bg-1: #080e1a;
+  --bg-2: #0c1422;
+  --line: rgba(0, 212, 255, 0.055);
+
+  --text: #ccd8e8;
+  --muted: #5a7a92;
+
+  --primary: #00d4ff;
+  --danger: #ff2d78;
+  --success: #00ff9f;
+  --accent: #bf5af2;
+  --warning: #ffe600;
+
+  --border: rgba(0, 212, 255, 0.13);
+  --shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+
+  /* Слайдовый заголовок (# в markdown → h1): один размер для всех layout/class */
+  --slide-h1-size: 1.9em;
+}
+
+html, body, #app {
+  background: var(--bg-0);
+}
+
+.slidev-layout {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 5%, rgba(0, 212, 255, 0.09), transparent),
+    radial-gradient(ellipse 50% 40% at 5% 95%, rgba(191, 90, 242, 0.07), transparent),
+    linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 60%, var(--bg-2) 100%);
+  color: var(--text);
+  font-family: 'Inter', 'JetBrains Mono', monospace;
+  padding: 1.15rem 1.35rem !important;
+}
+
+/* grid */
+.slidev-layout::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* «дыхание» сетки: #slide-content — выше специфичность, чем порядок после Uno */
+#slide-content .slidev-layout.center::before,
+#slide-content .slidev-layout.section::before {
+  --line: rgba(0, 212, 255, 0.092);
+  animation: grid-fade 8s ease-in-out infinite;
+}
+
+/* обычные слайды: чуть заметнее сетка + левая «шина» */
+#slide-content .slidev-layout.default {
+  box-shadow: inset 3px 0 0 rgba(0, 212, 255, 0.28);
+}
+
+#slide-content .slidev-layout.default::before {
+  --line: rgba(0, 212, 255, 0.078);
+  animation: grid-fade-subtle 16s ease-in-out infinite;
+}
+
+/* секции: рамка-неон + уже усиленная сетка */
+#slide-content .slidev-layout.section {
+  animation: section-frame-glow 9s ease-in-out infinite;
+}
+
+/* scanlines CRT */
+.slidev-layout::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.025) 3px,
+    rgba(0, 0, 0, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.slidev-layout > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Полноэкранный скрин на белом фоне (без заголовка, без сетки/сканлайнов) */
+#slide-content .slidev-layout.full:has(> .slide-old-wrap) {
+  background: #ffffff !important;
+  padding: 0 !important;
+  color: #1a1a1a;
+}
+
+#slide-content .slidev-layout.full:has(> .slide-old-wrap)::before,
+#slide-content .slidev-layout.full:has(> .slide-old-wrap)::after {
+  display: none !important;
+}
+
+#slide-content .slidev-layout.full > .slide-old-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+#slide-content .slidev-layout.full > .slide-old-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* GIF на обычном фоне дэка (сетка, градиент) — центр, лёгкая рамка */
+#slide-content .slidev-layout.center .slide-new-web {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: min(100%, 52rem);
+  margin: 0 auto;
+  padding: 0.15rem 0;
+}
+
+#slide-content .slidev-layout.center .slide-new-web img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: min(68vh, 560px);
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(191, 90, 242, 0.06),
+    0 12px 48px rgba(0, 0, 0, 0.45),
+    0 0 32px rgba(0, 212, 255, 0.08);
+}
+
+/*
+ * @slidev/theme-default/styles/layouts.css: .slidev-layout h1 + p { opacity-50 }
+ * Первый абзац сразу после h1 становится «серым» — для всех layout (default, section, …).
+ *
+ * Базовая типографика ниже с префиксом .slidev-slide-content — иначе uno.css (идёт после
+ * user styles) перебивает голые h1/p правилами .slidev-layout h1 { text-4xl … }.
+ */
+.slidev-slide-content .slidev-layout h1 + p {
+  opacity: 1 !important;
+}
+
+.slidev-slide-content .slidev-layout h1,
+.slidev-slide-content .slidev-layout h2,
+.slidev-slide-content .slidev-layout h3,
+.slidev-slide-content .slidev-layout h4 {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+}
+
+.slidev-slide-content .slidev-layout h1 {
+  font-size: var(--slide-h1-size);
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 0.55rem;
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 1.05;
+  text-shadow:
+    0 0 10px rgba(0, 212, 255, 0.7),
+    0 0 30px rgba(0, 212, 255, 0.25);
+}
+
+.slidev-slide-content .slidev-layout h1::before {
+  content: "> ";
+  color: var(--danger);
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 45, 120, 0.7);
+}
+
+/* перегруженные слайды: плотнее отступы у h1, компактнее панель и signal */
+.slidev-slide-content .slidev-layout.slide-dense h1 {
+  margin-bottom: 0.32rem;
+  line-height: 1.02;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .panel {
+  margin-top: 0.32rem;
+  padding: 0.62rem 0.82rem 0.55rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .panel .status {
+  font-size: 0.64em;
+  padding: 0.24rem 0.46rem;
+  margin-bottom: 0.48rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .panel .hero-line {
+  font-size: 0.94em;
+  margin-bottom: 0.38rem;
+  line-height: 1.2;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .panel .signal-list + .hero-line {
+  margin-top: 0.48rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .signal-list {
+  gap: 0.32rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .signal {
+  padding: 0.32rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .signal-label {
+  font-size: 0.66em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .signal-value {
+  font-size: 0.84em;
+  line-height: 1.34;
+}
+
+/* проблема / решение в колонку: компактнее по вертикали (только slide-dense + .stack) */
+.slidev-slide-content .slidev-layout.slide-dense:has(.stack) h1 {
+  margin-bottom: 0.2rem;
+  line-height: 1;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack {
+  gap: 0.28rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack > .panel ~ .panel {
+  margin-top: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .panel {
+  margin-top: 0.22rem;
+  padding: 0.42rem 0.62rem 0.38rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .panel .status {
+  font-size: 0.58em;
+  padding: 0.18rem 0.38rem;
+  margin-bottom: 0.32rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .panel .hero-line {
+  font-size: 0.78em;
+  margin-bottom: 0.28rem;
+  line-height: 1.15;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .signal-list {
+  gap: 0.2rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .signal {
+  padding: 0.2rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .signal-label {
+  font-size: 0.6em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .stack .signal-value {
+  font-size: 0.72em;
+  line-height: 1.28;
+}
+
+/* slide-dense + две колонки (напр. «Краулинг») */
+.slidev-slide-content .slidev-layout.slide-dense .grid-2-even {
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .grid-2-even > .panel {
+  min-width: 0;
+  margin-top: 0.28rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .grid-2-even > .panel .callout {
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+}
+
+/* Только слайд «Редизайн: fingerprint состояния»: чуть меньше кегль, чуть больше воздуха между блоками */
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air h1 {
+  font-size: calc(var(--slide-h1-size) * 0.92);
+  margin-bottom: 0.38rem;
+  line-height: 1.02;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel {
+  margin-top: 0.28rem;
+  padding: 0.48rem 0.7rem 0.4rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .status {
+  font-size: 0.6em;
+  padding: 0.2rem 0.4rem;
+  margin-bottom: 0.38rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .hero-line {
+  font-size: 0.88em;
+  margin-bottom: 0.36rem;
+  line-height: 1.16;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .flow {
+  font-size: 0.9em;
+  margin-top: 0.48rem;
+  gap: 0.3rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .flow .node {
+  padding: 0.2rem 0.44rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-list {
+  gap: 0.28rem;
+  margin-top: 0.42rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal {
+  padding: 0.26rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-label {
+  font-size: 0.62em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-value {
+  font-size: 0.78em;
+  line-height: 1.28;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even {
+  margin-top: 0.52rem;
+  gap: 0.68rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even > .panel {
+  margin-top: 0;
+  padding: 0.46rem 0.6rem 0.4rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even .panel .status {
+  font-size: 0.58em;
+  padding: 0.18rem 0.38rem;
+  margin-bottom: 0.36rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even .signal-list {
+  gap: 0.26rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even .signal {
+  padding: 0.24rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even .signal-label {
+  font-size: 0.6em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even .signal-value {
+  font-size: 0.76em;
+  line-height: 1.26;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .callout {
+  margin: 0.62rem 0 0;
+  padding: 0.58rem 0.8rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .callout p {
+  font-size: 0.9em;
+  line-height: 1.34;
+}
+
+/* Слайд «Кнопку уже нажимали?» (31): чуть меньше базового air, но с воздухом между блоками */
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight h1 {
+  font-size: calc(var(--slide-h1-size) * 0.9);
+  margin-bottom: 0.32rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel {
+  margin-top: 0.22rem;
+  padding: 0.44rem 0.64rem 0.38rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .status {
+  font-size: 0.58em;
+  padding: 0.18rem 0.36rem;
+  margin-bottom: 0.32rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .hero-line {
+  font-size: 0.86em;
+  margin-bottom: 0.32rem;
+  line-height: 1.15;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .flow {
+  font-size: 0.86em;
+  margin-top: 0.42rem;
+  gap: 0.28rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .flow .node {
+  padding: 0.18rem 0.4rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-list {
+  gap: 0.22rem;
+  margin-top: 0.36rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal {
+  padding: 0.2rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-label {
+  font-size: 0.6em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-value {
+  font-size: 0.74em;
+  line-height: 1.24;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even {
+  margin-top: 0.48rem;
+  gap: 0.58rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even > .panel {
+  padding: 0.42rem 0.56rem 0.36rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even .panel .status {
+  font-size: 0.56em;
+  padding: 0.16rem 0.34rem;
+  margin-bottom: 0.3rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even .signal-list {
+  gap: 0.2rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even .signal {
+  padding: 0.18rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even .signal-label {
+  font-size: 0.58em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even .signal-value {
+  font-size: 0.72em;
+  line-height: 1.22;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .callout {
+  margin: 0.52rem 0 0;
+  padding: 0.52rem 0.72rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .callout p {
+  font-size: 0.86em;
+  line-height: 1.3;
+}
+
+/* Текст + иллюстрация справа (напр. «динамический краулер») */
+.slidev-slide-content .slidev-layout.slide-dense .grid-2-even--with-figure {
+  align-items: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .slide-side-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .slide-side-figure img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: min(58vh, 380px);
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(191, 90, 242, 0.06),
+    0 10px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* Слайд 2: отступы заголовка как у базового h1 при slide-dense, контент — компактная сетка */
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split h1 {
+  margin-bottom: 0.55rem;
+  line-height: 1.05;
+}
+
+/* Слайд 2: компактная типографика + ~10% к размерам колонок и картинки */
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .grid-2-even--with-figure {
+  grid-template-columns: minmax(0, 1.21fr) minmax(0, 0.99fr);
+  gap: 0.462rem;
+  align-items: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .panel {
+  padding: 0.44rem 0.572rem 0.374rem;
+  margin-top: 0.198rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .panel .status {
+  font-size: 0.638em;
+  padding: 0.198rem 0.396rem;
+  margin-bottom: 0.308rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .panel .hero-line {
+  font-size: 0.836em;
+  margin-bottom: 0.264rem;
+  line-height: 1.12;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .signal-list {
+  gap: 0.176rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .signal {
+  padding: 0.176rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .signal-label {
+  font-size: 0.616em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .signal-value {
+  font-size: 0.77em;
+  line-height: 1.24;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .slide-side-figure img {
+  max-height: min(52.8vh, 330px);
+}
+
+/* Слайд 4: текст + иллюстрация; отступы заголовка как у базового h1, текст — обычный slide-dense (без ужимания) */
+.slidev-slide-content .slidev-layout.slide-dense.slide-4-split h1 {
+  margin-bottom: 0.55rem;
+  line-height: 1.05;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-4-split .grid-2-even--with-figure {
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-4-split .slide-side-figure img {
+  max-height: min(54vh, 360px);
+}
+
+/* Слайд 5: две панели друг под другом слева, иллюстрация SAST/DAST справа */
+.slidev-slide-content .slidev-layout.slide-dense.slide-5-split h1 {
+  margin-bottom: 0.55rem;
+  line-height: 1.05;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-5-split .grid-2-even--with-figure {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.88fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-5-split .slide-5-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-5-split .slide-5-text-stack > .panel {
+  margin-top: 0;
+  min-width: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-5-split .slide-side-figure img {
+  max-height: min(52vh, 400px);
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Слайд 19: кейс SPA — три компактные панели в левой половине, иллюстрация справа */
+#slide-content .slidev-slide-content:has(.slidev-layout.slide-19-split) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#slide-content .slidev-layout.slide-dense.slide-19-split {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split h1 {
+  flex: 0 0 auto;
+  margin-bottom: 0.4rem;
+  line-height: 1.05;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .grid-2-even--with-figure {
+  flex: 1 1 auto;
+  display: grid;
+  align-content: center;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack > .panel {
+  margin-top: 0;
+  min-width: 0;
+  padding: 0.48rem 0.62rem 0.42rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack .status {
+  font-size: 0.58em;
+  padding: 0.2rem 0.36rem;
+  margin-bottom: 0.3rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack .hero-line {
+  font-size: 0.76em;
+  margin-bottom: 0.26rem;
+  line-height: 1.18;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack .signal-list {
+  gap: 0.2rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack .signal {
+  padding: 0.2rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack .signal-label {
+  font-size: 0.58em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack .signal-value {
+  font-size: 0.7em;
+  line-height: 1.26;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-side-figure {
+  overflow: visible;
+  justify-content: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-side-figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(70vh, 500px);
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Слайд 24: «Типичный краулер…» — узкая панель + framework.png, пара по центру слайда; h1 без изменений */
+#slide-content .slidev-slide-content:has(.slidev-layout.slide-24-crawler-split) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#slide-content .slidev-layout.slide-dense.slide-24-crawler-split {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split h1 {
+  flex: 0 0 auto;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-center {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+  padding: 0.1rem 0 0.25rem;
+}
+
+/* Картинка +20% к прошлому шагу; колонка текста чуть уже + чуть меньше шрифт — меньше риск наезда при nowrap */
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row {
+  display: grid;
+  grid-template-columns: minmax(0, 60fr) minmax(0, 32fr);
+  gap: 0.85rem 1.25rem;
+  align-items: center;
+  width: 100%;
+  max-width: min(100%, 96vw, 88rem);
+  margin-left: auto;
+  margin-right: auto;
+  min-height: min(70vh, 640px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row > .panel {
+  margin-top: 0;
+  min-width: 0;
+  box-sizing: border-box;
+  padding-left: 0.68rem;
+  padding-right: 0.68rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row .signal-value {
+  white-space: nowrap;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row > .panel .status {
+  font-size: 0.58em;
+  padding: 0.2rem 0.4rem;
+  margin-bottom: 0.36rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row > .panel .signal-label {
+  font-size: 0.6em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row > .panel .signal-value {
+  font-size: 0.76em;
+  line-height: 1.3;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-crawler-row > .panel .note {
+  font-size: 0.8em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-framework {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  max-width: min(100%, 33vw, 420px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-framework img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(77vh, 674px);
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(191, 90, 242, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(0, 212, 255, 0.08);
+}
+
+/* Слайд 37: «LLM-based How to Fix — эффект» — узкая панель + 35.png, пара по центру */
+#slide-content .slidev-slide-content:has(.slidev-layout.slide-37-h2f-split) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#slide-content .slidev-layout.slide-dense.slide-37-h2f-split {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split h1 {
+  flex: 0 0 auto;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-center {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+  padding: 0.1rem 0 0.35rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row {
+  display: grid;
+  grid-template-columns: minmax(0, 44fr) minmax(0, 48fr);
+  gap: 0.85rem 1.15rem;
+  align-items: center;
+  width: 100%;
+  max-width: min(100%, 94vw, 82rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel {
+  margin-top: 0;
+  min-width: 0;
+  max-width: min(100%, 34rem);
+  box-sizing: border-box;
+  padding: 0.55rem 0.72rem 0.5rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .status {
+  font-size: 0.58em;
+  padding: 0.2rem 0.4rem;
+  margin-bottom: 0.34rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .signal-list {
+  gap: 0.26rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .signal {
+  padding: 0.26rem 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .signal-label {
+  font-size: 0.6em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .signal-value {
+  font-size: 0.78em;
+  line-height: 1.32;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .slide-37-h2f-callout {
+  margin-top: 0.55rem !important;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-row > .panel .slide-37-h2f-callout p {
+  font-size: 0.82em;
+  line-height: 1.35;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(62vh, 520px);
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(191, 90, 242, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(0, 212, 255, 0.08);
+}
+
+/* Блок auth: «Запись и replay» — панель + GIF */
+.slidev-slide-content .slidev-layout.slide-dense.slide-auth-replay .grid-2-even--with-figure {
+  align-items: center;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-auth-replay .slide-side-figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(58vh, 420px);
+  object-fit: contain;
+  object-position: center;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  box-shadow:
+    0 0 0 1px rgba(191, 90, 242, 0.06),
+    0 12px 40px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(0, 212, 255, 0.08);
+}
+
+/* Слайд 6: шире текст, уже колонка с мемом; заголовок сверху, сетка по центру по вертикали */
+#slide-content .slidev-slide-content:has(.slidev-layout.slide-6-split) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+#slide-content .slidev-layout.slide-dense.slide-6-split {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split h1 {
+  flex: 0 0 auto;
+  margin-bottom: 0.55rem;
+  line-height: 1.05;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .grid-2-even--with-figure {
+  flex: 1 1 auto;
+  display: grid;
+  align-content: center;
+  min-height: 0;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 0.38fr);
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* чуть крупнее текст в панели относительно slide-dense */
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .panel .hero-line {
+  font-size: 1.04em;
+  margin-bottom: 0.4rem;
+  line-height: 1.22;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .signal-label {
+  font-size: 0.72em;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .signal-value {
+  font-size: 0.92em;
+  line-height: 1.38;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .slide-side-figure {
+  overflow: visible;
+  justify-content: center;
+}
+
+/* Узкая колонка: не тянуть img на 100% ширины — иначе обрез по высоте; вписываем целиком через max-* + contain */
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .slide-side-figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: min(32vh, 220px);
+  object-fit: contain;
+  object-position: center;
+}
+
+.slidev-slide-content .slidev-layout.title-cursor h1::after {
+  content: "_";
+  color: var(--primary);
+  animation: blink 1.1s step-end infinite;
+  margin-left: 0.04em;
+  font-weight: 300;
+}
+
+#slide-content .slidev-layout.section h1 {
+  animation:
+    section-h1-in 1.05s cubic-bezier(0.2, 0.9, 0.2, 1) both,
+    section-h1-glow 4.2s ease-in-out infinite 1.05s;
+}
+
+#slide-content .slidev-layout.section h1 + p {
+  animation: section-p-in 0.65s cubic-bezier(0.2, 0.9, 0.2, 1) 0.28s both;
+}
+
+.slidev-slide-content .slidev-layout h2 {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--danger);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(255, 45, 120, 0.5);
+}
+
+.slidev-slide-content .slidev-layout h3 {
+  font-size: 0.88em;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.slidev-slide-content .slidev-layout p {
+  line-height: 1.45;
+  font-size: 0.95em;
+  margin: 0.2rem 0 0.45rem;
+}
+
+/* акцентный цвет для <strong> в контенте слайда; шрифт как у окружающего текста */
+.slidev-slide-content .slidev-layout strong {
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(191, 90, 242, 0.32);
+  font-weight: 700;
+  font-family: inherit;
+}
+
+.slidev-slide-content .slidev-layout h1 strong,
+.slidev-slide-content .slidev-layout h2 strong,
+.slidev-slide-content .slidev-layout h3 strong,
+.slidev-slide-content .slidev-layout h4 strong {
+  color: inherit;
+  text-shadow: inherit;
+  font-weight: inherit;
+}
+
+.small {
+  font-size: 0.84em;
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.center-xy {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* бенчмарки краулера: сетка карточек в стиле .panel */
+.crawler-bench-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem 0.45rem;
+  margin-top: 0.32rem;
+  align-items: stretch;
+}
+
+@media (max-width: 980px) {
+  .crawler-bench-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.crawler-bench-card {
+  position: relative;
+  min-width: 0;
+  padding: 0.55rem 0.6rem 0.5rem 0.72rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 45, 120, 0.35);
+  background: linear-gradient(160deg, rgba(6, 14, 28, 0.94), rgba(3, 8, 18, 0.92));
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(255, 45, 120, 0.06) inset,
+    0 0 20px rgba(255, 45, 120, 0.08);
+  overflow: hidden;
+}
+
+.crawler-bench-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--danger) 0%, rgba(255, 45, 120, 0.2) 70%, transparent 100%);
+  box-shadow: 0 0 8px rgba(255, 45, 120, 0.45);
+  border-radius: 10px 0 0 10px;
+}
+
+.crawler-bench-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.35);
+}
+
+.crawler-bench-main {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.crawler-bench-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--danger);
+  text-shadow: 0 0 18px rgba(255, 45, 120, 0.45);
+}
+
+.crawler-bench-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 0.22rem 0.4rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.crawler-bench-badge--delta {
+  color: #fff;
+  background: var(--danger);
+  box-shadow: 0 0 12px rgba(255, 45, 120, 0.5);
+  min-width: 1.65rem;
+  text-align: center;
+  padding: 0.28rem 0.35rem;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crawler-bench-badge--new {
+  color: #fff;
+  background: linear-gradient(135deg, var(--danger), rgba(191, 90, 242, 0.85));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 14px rgba(255, 45, 120, 0.35);
+}
+
+.crawler-bench-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+}
+
+.crawler-bench-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.52em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.32rem;
+  border-radius: 4px;
+  color: var(--primary);
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+}
+
+.crawler-bench-how {
+  margin-top: 0.42rem;
+  padding: 0.48rem 0.65rem 0.45rem 0.72rem;
+}
+
+.crawler-bench-how .status {
+  margin-bottom: 0.38rem;
+}
+
+.crawler-how-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.18rem 0.85rem;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .crawler-how-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.crawler-how-item {
+  position: relative;
+  font-size: 0.68em;
+  line-height: 1.32;
+  color: var(--text);
+  padding: 0.1rem 0 0.1rem 1.15rem;
+}
+
+.crawler-how-item::before {
+  content: ">>";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.35);
+}
+
+.crawler-how-item--muted {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.crawler-how-item--muted::before {
+  color: var(--accent);
+}
+
+.grid-2-even {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* слайд «Проблемы классического DAST»: две колонки + полная ширина снизу */
+.slide-problems-classic {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slide-problems-classic > .panel {
+  margin-top: 0;
+}
+
+/* слайд «три режима»: две панели сверху, одна на всю ширину снизу */
+.panel-bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 0.55rem;
+  align-content: start;
+}
+
+.panel-bento > .panel {
+  margin-top: 0;
+  min-width: 0;
+}
+
+.panel-bento > .panel.panel-bento-full {
+  grid-column: 1 / -1;
+}
+
+.panel-bento .panel.panel-compact {
+  padding: 0.55rem 0.72rem 0.5rem;
+}
+
+.panel-bento .panel.panel-compact .status {
+  font-size: 0.62em;
+  padding: 0.24rem 0.42rem;
+  margin-bottom: 0.4rem;
+}
+
+.panel-bento .panel.panel-compact .hero-line {
+  font-size: 0.88em;
+  margin-bottom: 0.42rem;
+  line-height: 1.25;
+}
+
+.slidev-slide-content .slidev-layout .panel-bento .panel.panel-compact p {
+  font-size: 0.78em;
+  line-height: 1.38;
+  margin: 0.1rem 0 0.26rem;
+}
+
+/* метки «Плюсы/Минусы/Риск»: как signal-label / чип — mono, caps, трекинг; цвет — в тон чипа панели */
+.slidev-slide-content .slidev-layout .panel-bento .mode-kv-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-right: 0.35em;
+}
+
+.slidev-slide-content .slidev-layout .panel-bento .mode-kv-label--success {
+  color: var(--success);
+}
+
+.slidev-slide-content .slidev-layout .panel-bento .mode-kv-label--accent {
+  color: var(--accent);
+}
+
+.slidev-slide-content .slidev-layout .panel-bento .mode-kv-label--danger {
+  color: var(--danger);
+}
+
+/* крупное число + подпись (шаблон templates/cyberpunk.md) */
+.big-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.big-num.c-primary {
+  color: var(--primary);
+  text-shadow: 0 0 22px rgba(0, 212, 255, 0.42);
+}
+
+.big-num.c-accent {
+  color: var(--accent);
+  text-shadow: 0 0 22px rgba(191, 90, 242, 0.38);
+}
+
+.big-num.c-danger {
+  color: var(--danger);
+  text-shadow: 0 0 22px rgba(255, 45, 120, 0.38);
+}
+
+.big-num.c-warning {
+  color: var(--warning);
+  text-shadow: 0 0 18px rgba(255, 230, 0, 0.22);
+}
+
+.big-num.c-success {
+  color: var(--success);
+  text-shadow: 0 0 20px rgba(0, 255, 159, 0.32);
+}
+
+.goal-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+/* таблица маппинга: .check / .partial / .none на ячейках td */
+.map-table {
+  width: 100%;
+  margin: 0.6rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  font-size: 0.88em;
+}
+
+.map-table th,
+.map-table td {
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+  text-align: center;
+}
+
+.map-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(0, 212, 255, 0.06);
+  color: var(--primary);
+}
+
+.map-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.map-table .check {
+  background: rgba(0, 255, 159, 0.1);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.map-table .partial {
+  background: rgba(255, 230, 0, 0.08);
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.map-table .none {
+  background: rgba(255, 45, 120, 0.08);
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/*
+ * Q2-стиль: стрелки на всех ul внутри .slidev-layout (ниже).
+ * Класс ul-arrows в шаблоне — опциональная явная разметка; визуально то же самое.
+ * Таблица: .map-table--q2; крупные цифры: .big-num--q2 + .goal-label--q2
+ */
+
+.big-num--q2 {
+  font-size: 2.2em;
+  margin-bottom: 0.15rem;
+}
+
+.goal-label--q2 {
+  font-size: 0.7em;
+  letter-spacing: 0.07em;
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+table.map-table--q2 {
+  width: 100%;
+  margin: 0.6rem 0;
+  border-collapse: collapse;
+  font-size: 0.6em;
+  line-height: 1.2;
+  table-layout: fixed;
+  border: 0;
+  border-radius: 0;
+}
+
+.map-table--q2 th {
+  padding: 5px 4px;
+  text-align: left;
+  color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.95em;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.18);
+  background: transparent;
+}
+
+.map-table--q2 td {
+  padding: 4px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.map-table--q2 td:nth-child(2) {
+  text-align: left;
+  color: var(--text);
+}
+
+.map-table--q2 tr:hover td {
+  background: rgba(0, 212, 255, 0.03);
+}
+
+.map-table--q2 .check {
+  color: var(--success);
+  background: transparent;
+  font-weight: inherit;
+}
+
+.map-table--q2 .partial {
+  color: var(--warning);
+  background: transparent;
+  font-weight: inherit;
+  opacity: 1;
+}
+
+.map-table--q2 .none {
+  color: var(--muted);
+  background: transparent;
+  font-weight: inherit;
+  opacity: 0.4;
+}
+
+/* титул в стиле Q2: center + hero-title (длинный заголовок) */
+.deck-cover .hero-title {
+  font-size: clamp(1.22rem, 3.1vw, 2.05rem);
+  max-width: min(100%, 28ch);
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.06;
+}
+
+.deck-cover-provocative {
+  padding: 0 !important;
+}
+
+/*
+ * Обложка: при layout:center контент внутри .my-auto, не прямой ребёнок .slidev-layout —
+ * селектор "> .cover-provocative" не матчился, .my-auto схлопывался в 0 (дети absolute).
+ * layout:full + запасной блок для center. Префикс .slidev-slide-content — не только #slide-content.
+ */
+.slidev-slide-content .slidev-layout.deck-cover-provocative.center {
+  place-content: stretch stretch;
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+.slidev-slide-content .slidev-layout.deck-cover-provocative.center .my-auto {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+/* .slidev-layout > * задаёт position:relative — перебиваем для корня обложки. */
+.slidev-slide-content .slidev-layout.deck-cover-provocative .cover-provocative {
+  position: absolute !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.slidev-slide-content .slidev-layout.deck-cover-provocative.full {
+  min-height: 100%;
+}
+
+.cover-provocative {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.cover-provocative__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.72) contrast(1.05) saturate(1.02);
+  animation:
+    cover-provocative-bg-in 0.75s ease-out 0.05s forwards,
+    cover-provocative-drift 18s ease-in-out infinite;
+}
+
+.cover-provocative__title {
+  position: absolute;
+  left: clamp(1.4rem, 4vw, 3rem);
+  top: 50%;
+  z-index: 4;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.04em;
+  max-width: min(56vw, 8.6ch);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6.4vw, 5.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 24px rgba(0, 212, 255, 0.14),
+    0 0 50px rgba(191, 90, 242, 0.1);
+  animation: cover-provocative-title-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.cover-provocative__title span:first-child {
+  color: var(--primary);
+}
+
+.cover-provocative__title span:nth-child(2) {
+  color: #eef7ff;
+}
+
+.cover-provocative__title span:last-child {
+  color: var(--danger);
+}
+
+.cover-provocative__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(4, 8, 15, 0.98) 0%, rgba(4, 8, 15, 0.84) 18%, rgba(4, 8, 15, 0.28) 42%, rgba(4, 8, 15, 0.08) 100%),
+    radial-gradient(circle at 62% 46%, rgba(191, 90, 242, 0.18), transparent 22%),
+    radial-gradient(circle at 56% 52%, rgba(0, 212, 255, 0.14), transparent 24%),
+    radial-gradient(circle at 68% 50%, rgba(255, 45, 120, 0.12), transparent 18%);
+}
+
+.cover-provocative__glow {
+  position: absolute;
+  right: 8%;
+  bottom: 14%;
+  z-index: 2;
+  width: 38%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(191, 90, 242, 0.2), transparent 72%);
+  filter: blur(30px);
+  pointer-events: none;
+  animation: cover-provocative-glow 7.5s ease-in-out infinite;
+}
+
+/* title / cover hero (первый слайд) */
+.slidev-layout.cover h1::before {
+  content: none;
+}
+
+.slidev-layout.cover h1 {
+  font-size: clamp(1.65rem, 4.2vw, 2.85rem);
+  line-height: 1.08;
+  margin-bottom: 0.35rem;
+  text-align: center;
+  max-width: 22ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cover-hero-kicker {
+  display: block;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  text-shadow:
+    0 0 12px rgba(191, 90, 242, 0.55),
+    0 0 28px rgba(191, 90, 242, 0.2);
+}
+
+.cover-hero-sub {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 1.75rem !important;
+  opacity: 0.92;
+}
+
+.cover-hero-line {
+  width: min(320px, 72vw);
+  height: 4px;
+  margin: 0 auto 1.5rem;
+  border-radius: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary) 15%,
+    var(--accent) 50%,
+    var(--danger) 85%,
+    transparent
+  );
+  box-shadow:
+    0 0 18px rgba(0, 212, 255, 0.45),
+    0 0 36px rgba(191, 90, 242, 0.2);
+}
+
+#slide-content .slidev-layout.center .cover-hero-line {
+  background-size: 280% 100%;
+  background-repeat: no-repeat;
+  animation: hero-line-sheen 8s linear infinite;
+}
+
+.cover-hero-tags {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: var(--success);
+  letter-spacing: 0.06em;
+  margin: 0 !important;
+  text-shadow: 0 0 14px rgba(0, 255, 159, 0.35);
+}
+
+/* cover */
+.kicker {
+  display: inline-block;
+  margin-bottom: 0.7rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--success);
+  text-shadow: 0 0 14px rgba(0, 255, 159, 0.45);
+}
+
+.kicker::before {
+  content: "[ ";
+  color: var(--danger);
+  text-shadow: 0 0 8px rgba(255, 45, 120, 0.6);
+}
+
+.kicker::after {
+  content: " ]";
+  color: var(--danger);
+  text-shadow: 0 0 8px rgba(255, 45, 120, 0.6);
+}
+
+.hero-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 3em;
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.45rem;
+  text-align: center;
+  text-shadow:
+    0 0 20px rgba(0, 212, 255, 0.8),
+    0 0 60px rgba(0, 212, 255, 0.3),
+    0 0 100px rgba(0, 212, 255, 0.1);
+}
+
+.hero-title::before {
+  content: "> ";
+  color: var(--danger);
+  font-weight: 400;
+  text-shadow: 0 0 14px rgba(255, 45, 120, 0.8);
+}
+
+.hero-title::after {
+  content: "_";
+  color: var(--primary);
+  animation: blink 1.1s step-end infinite;
+  margin-left: 0.04em;
+  font-weight: 300;
+}
+
+.hero-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.12em;
+  color: var(--success);
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+  line-height: 1.45;
+  text-align: center;
+  text-shadow: 0 0 16px rgba(0, 255, 159, 0.4);
+}
+
+/* content primitives */
+.hero-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.18em;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 14px rgba(0, 255, 159, 0.45);
+}
+
+.hero-line::before {
+  content: "// ";
+  color: var(--danger);
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 45, 120, 0.65);
+}
+
+.panel {
+  position: relative;
+  background: linear-gradient(160deg, rgba(6, 14, 28, 0.94), rgba(3, 8, 18, 0.92));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.95rem 1rem 0.9rem;
+  box-shadow: var(--shadow), 0 0 0 1px rgba(0, 212, 255, 0.04) inset;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  margin-top: 0.6rem;
+}
+
+.panel.panel-narrow {
+  max-width: 34rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* финальный слайд «Вывод»: узкая колонка текста по центру */
+.panel.panel-conclusion {
+  max-width: min(92vw, 26.5rem);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.panel:hover {
+  border-color: rgba(0, 212, 255, 0.38);
+  box-shadow:
+    var(--shadow),
+    0 0 22px rgba(0, 212, 255, 0.14),
+    0 0 50px rgba(0, 212, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+/* left neon bar */
+.panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--primary) 0%, rgba(0, 212, 255, 0.2) 70%, transparent 100%);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+  opacity: 0.9;
+}
+
+/* top-right corner marker */
+.panel::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid var(--primary);
+  border-right: 1.5px solid var(--primary);
+  opacity: 0.45;
+  border-radius: 0 4px 0 0;
+  transition: opacity 0.25s ease, box-shadow 0.25s ease;
+}
+
+.panel:hover::after {
+  opacity: 0.9;
+  box-shadow: 2px -2px 8px rgba(0, 212, 255, 0.5);
+}
+
+.status {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7em;
+  line-height: 1;
+  padding: 0.32rem 0.55rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.status.active {
+  background: rgba(0, 255, 159, 0.07);
+  border: 1px solid rgba(0, 255, 159, 0.3);
+  color: var(--success);
+  box-shadow: 0 0 10px rgba(0, 255, 159, 0.12);
+}
+
+.status.warning {
+  background: rgba(255, 45, 120, 0.07);
+  border: 1px solid rgba(255, 45, 120, 0.32);
+  color: var(--danger);
+  box-shadow: 0 0 10px rgba(255, 45, 120, 0.14);
+}
+
+.status.accent {
+  background: rgba(191, 90, 242, 0.08);
+  border: 1px solid rgba(191, 90, 242, 0.30);
+  color: var(--accent);
+  box-shadow: 0 0 10px rgba(191, 90, 242, 0.14);
+}
+
+.badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.badge-row.left {
+  justify-content: flex-start;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.36rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.76em;
+  font-weight: 700;
+  border: 1px solid transparent;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  cursor: default;
+}
+
+.badge:hover {
+  transform: translateY(-1px);
+}
+
+.badge.primary {
+  background: rgba(0, 212, 255, 0.09);
+  color: var(--primary);
+  border-color: rgba(0, 212, 255, 0.28);
+}
+.badge.primary:hover {
+  border-color: rgba(0, 212, 255, 0.55);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.25);
+}
+
+.badge.success {
+  background: rgba(0, 255, 159, 0.07);
+  color: var(--success);
+  border-color: rgba(0, 255, 159, 0.26);
+}
+.badge.success:hover {
+  border-color: rgba(0, 255, 159, 0.5);
+  box-shadow: 0 0 16px rgba(0, 255, 159, 0.2);
+}
+
+.badge.danger {
+  background: rgba(255, 45, 120, 0.09);
+  color: var(--danger);
+  border-color: rgba(255, 45, 120, 0.28);
+}
+.badge.danger:hover {
+  border-color: rgba(255, 45, 120, 0.52);
+  box-shadow: 0 0 16px rgba(255, 45, 120, 0.22);
+}
+
+.badge.accent {
+  background: rgba(191, 90, 242, 0.09);
+  color: var(--accent);
+  border-color: rgba(191, 90, 242, 0.28);
+}
+.badge.accent:hover {
+  border-color: rgba(191, 90, 242, 0.52);
+  box-shadow: 0 0 16px rgba(191, 90, 242, 0.2);
+}
+
+.badge.warning {
+  background: rgba(255, 230, 0, 0.07);
+  color: var(--warning);
+  border-color: rgba(255, 230, 0, 0.26);
+}
+.badge.warning:hover {
+  border-color: rgba(255, 230, 0, 0.5);
+  box-shadow: 0 0 16px rgba(255, 230, 0, 0.18);
+}
+
+#slide-content .slidev-layout.center .badge {
+  animation: badge-pulse 5.5s ease-in-out infinite;
+}
+
+.signal-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.signal {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.45rem;
+  row-gap: 0.25rem;
+  align-items: baseline;
+  padding: 0.55rem 0;
+  border-top: 1px solid rgba(0, 212, 255, 0.07);
+}
+
+.signal:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.signal-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  opacity: 0.55;
+}
+
+.signal-value {
+  line-height: 1.42;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.metric-grid.cols-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.metric-grid.cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.metric {
+  background: rgba(0, 212, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.8rem;
+  transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 212, 255, 0.32);
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.1);
+}
+
+.metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary);
+  font-size: 1.25em;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.45);
+}
+
+.note {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.08);
+  color: var(--muted);
+  font-size: 0.88em;
+}
+
+.panel .note ol li {
+  color: var(--text);
+}
+
+.flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1em;
+  margin-top: 0.6rem;
+}
+
+.flow .node {
+  padding: 0.28rem 0.55rem;
+  border-radius: 4px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.16);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.flow .node:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 212, 255, 0.42);
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.18);
+}
+
+.flow .arrow {
+  color: var(--primary);
+  font-weight: 700;
+  padding: 0 0.1rem;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.55);
+}
+
+/* markdown lists — стрелки как в «цели Q2» (везде в презентации); .cyber-checklist — ▸ ниже */
+.slidev-slide-content .slidev-layout ul {
+  margin-top: 0.45rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.slidev-slide-content .slidev-layout ul li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin: 0.45rem 0;
+  line-height: 1.45;
+  font-size: 0.95em;
+}
+
+.slidev-slide-content .slidev-layout ul li::marker {
+  content: none;
+}
+
+.slidev-slide-content .slidev-layout ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
+}
+
+/* inline code */
+.slidev-slide-content .slidev-layout code {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(0, 212, 255, 0.06);
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  padding: 0.12rem 0.35rem;
+  border-radius: 4px;
+  color: var(--primary);
+}
+
+/* mermaid */
+.mermaid {
+  background: rgba(3, 6, 14, 0.55);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.7rem;
+  margin-top: 0.6rem;
+}
+
+.mermaid svg .node rect,
+.mermaid svg .node polygon,
+.mermaid svg .node circle,
+.mermaid svg .node path {
+  transition: filter 0.18s ease, stroke-width 0.18s ease;
+}
+
+.mermaid svg .node:hover rect,
+.mermaid svg .node:hover polygon,
+.mermaid svg .node:hover circle,
+.mermaid svg .node:hover path {
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+  stroke-width: 2px !important;
+}
+
+.mermaid svg .edgePath path {
+  transition: filter 0.18s ease;
+}
+
+.mermaid svg .edgePath:hover path {
+  filter: drop-shadow(0 0 8px rgba(0, 255, 159, 0.4));
+}
+
+/* ─── Контентные слайды: типографика, списки, акценты (#slide-content + .default — над Uno) ─── */
+
+#slide-content .slidev-layout.default h1 {
+  position: relative;
+  padding-bottom: 0.15rem;
+}
+
+#slide-content .slidev-layout.default h1::after {
+  content: "";
+  display: block;
+  height: 3px;
+  margin-top: 0.5rem;
+  width: min(12rem, 42vw);
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 45%, var(--danger) 78%, transparent 100%);
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.35);
+}
+
+#slide-content .slidev-layout.default h1 + p {
+  font-size: 1.05em;
+  line-height: 1.5;
+  color: var(--muted);
+  border-left: 2px solid rgba(0, 212, 255, 0.35);
+  padding: 0.35rem 0 0.35rem 0.85rem;
+  margin-top: 0.35rem !important;
+  margin-bottom: 0.65rem !important;
+}
+
+#slide-content .slidev-layout.default h2 {
+  position: relative;
+  margin-top: 1.15rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+}
+
+#slide-content .slidev-layout.default h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 4.5rem;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, var(--danger), transparent);
+  box-shadow: 0 0 10px rgba(255, 45, 120, 0.35);
+}
+
+/* «Проблема» / «Реальность» — абзац из одного strong (только элемент в p; текст до/после strong не считается в :only-child и ловит этот стиль — см. .panel p strong ниже) */
+#slide-content .slidev-layout.default p > strong:only-child {
+  display: inline-block;
+  margin-top: 0.75rem;
+  margin-bottom: 0.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 0 0 16px rgba(191, 90, 242, 0.35);
+}
+
+/* В .panel абзац часто «текст + strong»; :only-child на strong всё равно срабатывает — возвращаем обычный Inter как у signal-value */
+#slide-content .slidev-layout.default .panel p strong {
+  display: inline;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(191, 90, 242, 0.32);
+}
+
+#slide-content .slidev-layout.default p:has(> strong:only-child) + ul {
+  margin-top: 0.15rem;
+  padding-left: 0.65rem;
+  border-left: 2px solid rgba(191, 90, 242, 0.22);
+  background: linear-gradient(90deg, rgba(191, 90, 242, 0.04), transparent 55%);
+  border-radius: 0 8px 8px 0;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+#slide-content .slidev-layout.default ul {
+  gap: 0.15rem;
+}
+
+#slide-content .slidev-layout.default ul li {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#slide-content .slidev-layout.default ul li:hover {
+  transform: translateX(3px);
+  color: #d8e6f2;
+}
+
+#slide-content .slidev-layout.default ol {
+  counter-reset: cyber-ol;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.55rem;
+}
+
+#slide-content .slidev-layout.default ol li {
+  counter-increment: cyber-ol;
+  position: relative;
+  padding-left: 2.65rem;
+  margin: 0.65rem 0;
+  min-height: 1.6rem;
+}
+
+#slide-content .slidev-layout.default ol li::before {
+  content: counter(cyber-ol, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  width: 1.85rem;
+  height: 1.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 800;
+  line-height: 1.85rem;
+  text-align: center;
+  color: var(--bg-0);
+  background: linear-gradient(145deg, var(--primary), var(--accent));
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
+}
+
+#slide-content .slidev-layout.default a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.35);
+  transition: border-color 0.2s ease, text-shadow 0.2s ease;
+}
+
+#slide-content .slidev-layout.default a:hover {
+  border-bottom-color: var(--primary);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.45);
+}
+
+#slide-content .slidev-layout.default blockquote {
+  margin: 0.75rem 0;
+  padding: 0.65rem 1rem;
+  border-left: 3px solid var(--primary);
+  background: rgba(0, 212, 255, 0.04);
+  border-radius: 0 8px 8px 0;
+  color: var(--muted);
+  font-style: normal;
+}
+
+#slide-content .slidev-layout.default pre {
+  margin: 0.65rem 0;
+  padding: 0.75rem 1rem !important;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.18) !important;
+  background: linear-gradient(165deg, rgba(4, 10, 20, 0.95), rgba(2, 6, 14, 0.92)) !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.05) inset,
+    0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+#slide-content .slidev-layout.default pre code {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: inherit;
+}
+
+#slide-content .slidev-layout.default table {
+  width: 100%;
+  margin: 0.65rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+}
+
+#slide-content .slidev-layout.default th,
+#slide-content .slidev-layout.default td {
+  padding: 0.45rem 0.65rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+}
+
+#slide-content .slidev-layout.default th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  background: rgba(0, 212, 255, 0.06);
+}
+
+#slide-content .slidev-layout.default tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Двухколоночное сравнение */
+.cyber-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin: 0.75rem 0 0.5rem;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .cyber-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cyber-col {
+  position: relative;
+  padding: 0.85rem 1rem 0.9rem 1.15rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  background: linear-gradient(160deg, rgba(6, 14, 28, 0.92), rgba(3, 8, 18, 0.88));
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 212, 255, 0.04) inset;
+  overflow: hidden;
+}
+
+.cyber-col::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(180deg, var(--primary), transparent 85%);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.cyber-col--sast::before {
+  background: linear-gradient(180deg, var(--warning), transparent 85%);
+  box-shadow: 0 0 12px rgba(255, 230, 0, 0.25);
+}
+
+.cyber-col--dast::before {
+  background: linear-gradient(180deg, var(--success), transparent 85%);
+  box-shadow: 0 0 12px rgba(0, 255, 159, 0.3);
+}
+
+.cyber-col p {
+  margin: 0 !important;
+}
+
+/* Выноски / инсайты */
+.callout {
+  margin: 0.85rem 0;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  background: linear-gradient(100deg, rgba(0, 212, 255, 0.07), rgba(191, 90, 242, 0.05));
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.06);
+}
+
+.callout--key {
+  border-color: rgba(255, 45, 120, 0.28);
+  background: linear-gradient(100deg, rgba(255, 45, 120, 0.08), rgba(0, 212, 255, 0.04));
+}
+
+.callout p {
+  margin: 0 !important;
+}
+
+/* Крупный финальный акцент */
+.cyber-statement {
+  margin-top: 1rem;
+  padding: 1.1rem 1.2rem;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  background:
+    radial-gradient(ellipse 80% 120% at 50% 0%, rgba(0, 212, 255, 0.1), transparent 55%),
+    linear-gradient(165deg, rgba(6, 14, 28, 0.95), rgba(3, 8, 18, 0.9));
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.08);
+}
+
+.cyber-statement p {
+  margin: 0.4rem 0 !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+/* Инсайт-слайд: контраст «ложной причины» → тезис → рычаг */
+.insight-moment {
+  max-width: min(100%, 38rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Длинный заголовок в одну строку (слайд «Сначала разведка…» и аналоги) */
+.insight-moment.insight-moment--wide {
+  max-width: min(100%, 58rem);
+}
+
+.slidev-slide-content .slidev-layout.center .center-xy.insight-moment--wide .insight-moment__rule {
+  width: min(520px, 92vw);
+}
+
+.insight-moment__rule {
+  width: min(360px, 78vw);
+  margin-bottom: 1.15rem;
+}
+
+.cyber-statement.insight-moment__body {
+  margin-top: 0;
+  text-align: left;
+}
+
+.slidev-slide-content .insight-moment__body p {
+  margin: 0.5rem 0 !important;
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.38;
+}
+
+.slidev-slide-content .insight-moment__hook {
+  font-size: clamp(0.88rem, 1.85vw, 1.05rem);
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.slidev-slide-content .insight-moment__core {
+  font-size: clamp(1.02rem, 2.35vw, 1.38rem);
+  font-weight: 800;
+  color: var(--text);
+  margin: 0.75rem 0 !important;
+  padding: 0.65rem 0 0.55rem 1rem;
+  border-left: 3px solid rgba(255, 45, 120, 0.55);
+  box-shadow: inset 12px 0 28px -18px rgba(255, 45, 120, 0.22);
+}
+
+.slidev-slide-content .insight-moment__lever {
+  font-size: clamp(0.9rem, 1.95vw, 1.1rem);
+  font-weight: 600;
+  color: var(--success);
+  text-shadow: 0 0 14px rgba(0, 255, 159, 0.22);
+}
+
+.cyber-checklist ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-top: 0.5rem !important;
+}
+
+.cyber-checklist ul li {
+  position: relative;
+  padding-left: 1.65rem !important;
+  margin: 0.55rem 0 !important;
+}
+
+.slidev-slide-content .slidev-layout .cyber-checklist ul li::before {
+  content: "▸" !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--success);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(0, 255, 159, 0.45);
+}
+
+/* Титул: лёгкая рамка вокруг блока */
+.slidev-layout.center .center-xy {
+  padding: 1.5rem 1.75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  background: radial-gradient(ellipse 70% 80% at 50% 20%, rgba(0, 212, 255, 0.06), transparent 60%);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(191, 90, 242, 0.06) inset;
+}
+
+/* После uno.css / Tailwind preflight — не трогаем background .slidev-layout (градиент), только канвас */
+html,
+body,
+#app {
+  background-color: var(--bg-0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #slide-content .slidev-layout.center::before,
+  #slide-content .slidev-layout.section::before,
+  #slide-content .slidev-layout.default::before,
+  #slide-content .slidev-layout.center .cover-hero-line,
+  #slide-content .slidev-layout.center .badge,
+  #slide-content .slidev-layout.section,
+  #slide-content .slidev-layout.section h1,
+  #slide-content .slidev-layout.section h1 + p {
+    animation: none !important;
+  }
+
+  .slidev-slide-content .slidev-layout.title-cursor h1::after {
+    animation: none !important;
+  }
+
+  #slide-content .slidev-layout.center::before,
+  #slide-content .slidev-layout.section::before,
+  #slide-content .slidev-layout.default::before {
+    --line: rgba(0, 212, 255, 0.055);
+    opacity: 1;
+  }
+
+  #slide-content .slidev-layout.section {
+    box-shadow:
+      inset 0 1px 0 rgba(0, 212, 255, 0.22),
+      inset 0 -1px 0 rgba(191, 90, 242, 0.16),
+      inset 0 0 100px rgba(0, 212, 255, 0.05);
+  }
+
+  #slide-content .slidev-layout.center .cover-hero-line {
+    background-size: unset;
+    background-repeat: unset;
+  }
+}
