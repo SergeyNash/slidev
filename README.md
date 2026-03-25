@@ -37,6 +37,8 @@ SLIDEV_BASE_NAME=my-repo-name npm run build
 4. После первого успешного запуска workflow презентация будет доступна по адресу  
    `https://<ваш-username>.github.io/<имя-репозитория>/`.
 
+5. Проверьте вкладку **Actions** в репозитории: job **deploy** должен завершиться зелёным; в **Settings → Pages** появится фактический URL сайта.
+
 Сборка в CI использует переменную `GITHUB_REPOSITORY`: скрипт `scripts/build-pages.mjs` выставляет `base` как `/<имя-репозитория>/`, чтобы работали JS/CSS и публичные файлы из `public/`.
 
 ## Полезные команды
