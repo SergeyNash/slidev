@@ -13,6 +13,14 @@ transition: slide-left
 defaults:
   layout: default
 layout: full
+---
+
+<div class="slide-zero-poster">
+  <img src="/slide00.png" alt="" />
+</div>
+
+---
+layout: full
 class: deck-cover deck-cover-provocative
 ---
 
@@ -1874,3 +1882,11 @@ DAST — это про реальную атакуемость.
 потом начали помогать исправлять,
 и следующий шаг — это автономные действия.
 -->
+
+---
+layout: full
+---
+
+<div class="slide-final-poster">
+  <img src="/final.png" alt="" />
+</div>
