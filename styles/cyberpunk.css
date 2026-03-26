@@ -527,6 +527,16 @@ html, body, #app {
   margin-bottom: 0;
 }
 
+.slidev-slide-content .slidev-layout.slide-dense .grid-2-even > div:has(> .panel) {
+  min-width: 0;
+  margin-top: 0.28rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-dense .grid-2-even > div:has(> .panel) .panel .callout {
+  margin-top: 0.45rem;
+  margin-bottom: 0;
+}
+
 /* Только слайд «Редизайн: fingerprint состояния»: чуть меньше кегль, чуть больше воздуха между блоками */
 .slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air h1 {
   font-size: calc(var(--slide-h1-size) * 0.92);
@@ -534,47 +544,56 @@ html, body, #app {
   line-height: 1.02;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel {
   margin-top: 0.28rem;
   padding: 0.48rem 0.7rem 0.4rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .status {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .status,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .status {
   font-size: 0.6em;
   padding: 0.2rem 0.4rem;
   margin-bottom: 0.38rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .hero-line {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .hero-line,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .hero-line {
   font-size: 0.88em;
   margin-bottom: 0.36rem;
   line-height: 1.16;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .flow {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .flow,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .flow {
   font-size: 0.9em;
   margin-top: 0.48rem;
   gap: 0.3rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .flow .node {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .flow .node,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .flow .node {
   padding: 0.2rem 0.44rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-list {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-list,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .signal-list {
   gap: 0.28rem;
   margin-top: 0.42rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .signal {
   padding: 0.26rem 0;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-label {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-label,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .signal-label {
   font-size: 0.62em;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-value {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > .panel .signal-value,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air > div:has(> .panel) > .panel .signal-value {
   font-size: 0.78em;
   line-height: 1.28;
 }
@@ -584,7 +603,8 @@ html, body, #app {
   gap: 0.68rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even > .panel {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even > .panel,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air .grid-2-even > div:has(> .panel) > .panel {
   margin-top: 0;
   padding: 0.46rem 0.6rem 0.4rem;
 }
@@ -628,47 +648,56 @@ html, body, #app {
   margin-bottom: 0.32rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel {
   margin-top: 0.22rem;
   padding: 0.44rem 0.64rem 0.38rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .status {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .status,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .status {
   font-size: 0.58em;
   padding: 0.18rem 0.36rem;
   margin-bottom: 0.32rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .hero-line {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .hero-line,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .hero-line {
   font-size: 0.86em;
   margin-bottom: 0.32rem;
   line-height: 1.15;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .flow {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .flow,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .flow {
   font-size: 0.86em;
   margin-top: 0.42rem;
   gap: 0.28rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .flow .node {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .flow .node,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .flow .node {
   padding: 0.18rem 0.4rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-list {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-list,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .signal-list {
   gap: 0.22rem;
   margin-top: 0.36rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .signal {
   padding: 0.2rem 0;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-label {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-label,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .signal-label {
   font-size: 0.6em;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-value {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > .panel .signal-value,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight > div:has(> .panel) > .panel .signal-value {
   font-size: 0.74em;
   line-height: 1.24;
 }
@@ -678,7 +707,8 @@ html, body, #app {
   gap: 0.58rem;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even > .panel {
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even > .panel,
+.slidev-slide-content .slidev-layout.slide-dense.slide-fingerprint-air.slide-fingerprint-tight .grid-2-even > div:has(> .panel) > .panel {
   padding: 0.42rem 0.56rem 0.36rem;
 }
 
@@ -915,7 +945,8 @@ html, body, #app {
   min-width: 0;
 }
 
-.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack > .panel {
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack > .panel,
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-19-text-stack > div:has(> .panel) > .panel {
   margin-top: 0;
   min-width: 0;
   padding: 0.48rem 0.62rem 0.42rem;
@@ -1452,6 +1483,16 @@ html, body, #app {
   align-items: stretch;
 }
 
+.crawler-bench-grid > div:has(> .crawler-bench-card) {
+  min-width: 0;
+  display: flex;
+}
+
+.crawler-bench-grid > div:has(> .crawler-bench-card) > .crawler-bench-card {
+  flex: 1;
+  width: 100%;
+}
+
 @media (max-width: 980px) {
   .crawler-bench-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1648,6 +1689,19 @@ html, body, #app {
   grid-column: 1 / -1;
 }
 
+/* «Три режима»: карточки обёрнуты в v-click — элемент сетки = обёртка, не .panel */
+.panel-bento > div:has(> .panel) {
+  min-width: 0;
+}
+
+.panel-bento > div:has(> .panel) > .panel {
+  margin-top: 0;
+}
+
+.panel-bento > div:has(> .panel.panel-bento-full) {
+  grid-column: 1 / -1;
+}
+
 .panel-bento .panel.panel-compact {
   padding: 0.55rem 0.72rem 0.5rem;
 }
@@ -1690,6 +1744,43 @@ html, body, #app {
 
 .slidev-slide-content .slidev-layout .panel-bento .mode-kv-label--danger {
   color: var(--danger);
+}
+
+/* Слайды с пошаговым v-click: плавное появление (Space / стрелка) */
+#slide-content .slidev-layout.slide-tri-modes .slidev-vclick-target,
+#slide-content .slidev-layout.slide-vclick-reveal .slidev-vclick-target,
+.slidev-slide-content .slidev-layout.slide-tri-modes .slidev-vclick-target,
+.slidev-slide-content .slidev-layout.slide-vclick-reveal .slidev-vclick-target {
+  transition:
+    opacity 0.38s ease,
+    transform 0.38s cubic-bezier(0.2, 0.88, 0.2, 1) !important;
+}
+
+#slide-content .slidev-layout.slide-tri-modes .slidev-vclick-hidden,
+#slide-content .slidev-layout.slide-vclick-reveal .slidev-vclick-hidden,
+.slidev-slide-content .slidev-layout.slide-tri-modes .slidev-vclick-hidden,
+.slidev-slide-content .slidev-layout.slide-vclick-reveal .slidev-vclick-hidden {
+  transform: translateY(14px) !important;
+}
+
+/* fingerprint + v-click: translateY у hidden обрезается overflow:hidden на .slidev-layout — оставляем только fade */
+#slide-content .slidev-layout.slide-fingerprint-air.slide-vclick-reveal .slidev-vclick-hidden,
+.slidev-slide-content .slidev-layout.slide-fingerprint-air.slide-vclick-reveal .slidev-vclick-hidden {
+  transform: none !important;
+}
+
+/* slide-problems-classic: обёртки v-click в сетке и снизу */
+.slide-problems-classic .grid-2-even > div:has(> .panel) {
+  min-width: 0;
+}
+
+.slide-problems-classic > div:has(> .panel) {
+  margin-top: 0;
+}
+
+/* stack + v-click (слайд 37) */
+.slidev-slide-content .slidev-layout.slide-dense .stack > div:has(> .panel) ~ div:has(> .panel) {
+  margin-top: 0;
 }
 
 /* крупное число + подпись (шаблон templates/cyberpunk.md) */

@@ -396,32 +396,43 @@ class: title-cursor
 -->
 
 ---
+class: slide-tri-modes
+clicks: 4
+---
 
 # Три режима DAST
 
 <div class="panel-bento">
-  <div class="panel panel-compact">
-    <div class="status active">ручной</div>
-    <div class="hero-line">Burp-подход</div>
-    <p><span class="mode-kv-label mode-kv-label--success">Плюсы:</span> полный контроль HTTP, гибкость атак, быстрый feedback</p>
-    <p><span class="mode-kv-label mode-kv-label--success">Минусы:</span> нужна экспертиза, плохо масштабируется</p>
+  <div v-click>
+    <div class="panel panel-compact">
+      <div class="status active">ручной</div>
+      <div class="hero-line">Burp-подход</div>
+      <p><span class="mode-kv-label mode-kv-label--success">Плюсы:</span> полный контроль HTTP, гибкость атак, быстрый feedback</p>
+      <p><span class="mode-kv-label mode-kv-label--success">Минусы:</span> нужна экспертиза, плохо масштабируется</p>
+    </div>
   </div>
-  <div class="panel panel-compact">
-    <div class="status accent">автоматизированный</div>
-    <div class="hero-line">масштаб</div>
-    <p><span class="mode-kv-label mode-kv-label--accent">Плюсы:</span> масштаб, регулярность, автоматизация</p>
-    <p><span class="mode-kv-label mode-kv-label--accent">Минусы:</span> слабый контекст, типичные проблемы с auth, меньше гибкости</p>
+  <div v-click>
+    <div class="panel panel-compact">
+      <div class="status accent">автоматизированный</div>
+      <div class="hero-line">масштаб</div>
+      <p><span class="mode-kv-label mode-kv-label--accent">Плюсы:</span> масштаб, регулярность, автоматизация</p>
+      <p><span class="mode-kv-label mode-kv-label--accent">Минусы:</span> слабый контекст, типичные проблемы с auth, меньше гибкости</p>
+    </div>
   </div>
-  <div class="panel panel-compact panel-bento-full">
-    <div class="status warning">CI/CD</div>
-    <div class="hero-line">в pipeline</div>
-    <p><span class="mode-kv-label mode-kv-label--danger">Плюсы:</span> в pipeline, проверка на релизах, автоматические gate</p>
-    <p><span class="mode-kv-label mode-kv-label--danger">Риск:</span> шум и нестабильность >> <strong>выключают</strong> сканер</p>
+  <div v-click>
+    <div class="panel panel-compact panel-bento-full">
+      <div class="status warning">CI/CD</div>
+      <div class="hero-line">в pipeline</div>
+      <p><span class="mode-kv-label mode-kv-label--danger">Плюсы:</span> в pipeline, проверка на релизах, автоматические gate</p>
+      <p><span class="mode-kv-label mode-kv-label--danger">Риск:</span> шум и нестабильность >> <strong>выключают</strong> сканер</p>
+    </div>
   </div>
 </div>
 
-<div class="callout callout--key" style="margin-top: 0.75rem;">
-  <p><strong>Вывод:</strong> нужен <strong>баланс</strong>, а не «один правильный режим»</p>
+<div v-click>
+  <div class="callout callout--key" style="margin-top: 0.75rem;">
+    <p><strong>Вывод:</strong> нужен <strong>баланс</strong>, а не «один правильный режим»</p>
+  </div>
 </div>
 
 <!--
@@ -429,43 +440,52 @@ class: title-cursor
 -->
 
 ---
+class: slide-dense slide-vclick-reveal
+clicks: 3
+---
 
 # Проблемы классического DAST
 
 <div class="slide-problems-classic">
   <div class="grid-2-even">
-    <div class="panel">
-      <div class="status warning">отчёт</div>
-      <div class="hero-line">находит, но не помогает чинить</div>
-      <div class="signal-list">
-        <div class="signal">
-          <div class="signal-label">шум</div>
-          <div class="signal-value">false positives, нет контекста, слабое понимание системы</div>
-        </div>
-        <div class="signal">
-          <div class="signal-label">действие</div>
-          <div class="signal-value">непонятно, <strong>что делать</strong> >> падает доверие</div>
+    <div v-click>
+      <div class="panel">
+        <div class="status warning">отчёт</div>
+        <div class="hero-line">находит, но не помогает чинить</div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-label">шум</div>
+            <div class="signal-value">false positives, нет контекста, слабое понимание системы</div>
+          </div>
+          <div class="signal">
+            <div class="signal-label">действие</div>
+            <div class="signal-value">непонятно, <strong>что делать</strong> >> падает доверие</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="panel">
-      <div class="status accent">auth</div>
-      <div class="hero-line">узкое место</div>
-      <p>без авторизации DAST видит только <strong>поверхность</strong></p>
-      <p>реальные уязвимости <strong>внутри</strong> приложения часто скрыты</p>
+    <div v-click>
+      <div class="panel">
+        <div class="status accent">auth</div>
+        <div class="hero-line">узкое место</div>
+        <p>без авторизации DAST видит только <strong>поверхность</strong></p>
+        <p>реальные уязвимости <strong>внутри</strong> приложения часто скрыты</p>
+      </div>
     </div>
   </div>
-  <div class="panel">
-    <div class="status active">краулер</div>
-    <div class="hero-line">Недостаточное покрытие</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">обход</div>
-        <div class="signal-value">слабый краулер или не под стек приложения >> <strong>неполная карта</strong> точек входа</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">иллюзия</div>
-        <div class="signal-value">пустой отчёт <strong>всегда</strong>, воспринимается негативно</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status active">краулер</div>
+      <div class="hero-line">Недостаточное покрытие</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">обход</div>
+          <div class="signal-value">слабый краулер или не под стек приложения >> <strong>неполная карта</strong> точек входа</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">иллюзия</div>
+          <div class="signal-value">пустой отчёт <strong>всегда</strong>, воспринимается негативно</div>
+        </div>
       </div>
     </div>
   </div>
@@ -521,53 +541,60 @@ class: title-cursor
 -->
 
 ---
-class: slide-dense
+class: slide-dense slide-vclick-reveal
+clicks: 3
 ---
 
 # Режимы, покрытие и прозрачность
 
 <div class="slide-problems-classic">
   <div class="grid-2-even">
-    <div class="panel">
-      <div class="status active">платформа</div>
-      <div class="hero-line">универсальность</div>
-      <div class="signal-list">
-        <div class="signal">
-          <div class="signal-label">режимы</div>
-          <div class="signal-value">ручной (как Burp), автоматический, CI/CD — <strong>один инструмент</strong></div>
+    <div v-click>
+      <div class="panel">
+        <div class="status active">платформа</div>
+        <div class="hero-line">универсальность</div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-label">режимы</div>
+            <div class="signal-value">ручной (как Burp), автоматический, CI/CD — <strong>один инструмент</strong></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="panel">
-      <div class="status accent">покрытие</div>
-      <div class="hero-line">стек, API и OAST</div>
-      <div class="signal-list">
-        <div class="signal">
-          <div class="signal-label">стек</div>
-          <div class="signal-value"><strong>Web + SPA</strong> · <strong>HTTP + WebSocket</strong></div>
-        </div>
-        <div class="signal">
-          <div class="signal-label">API</div>
-          <div class="signal-value">REST / gRPC / SOAP (+ GraphQL где применимо)</div>
-        </div>
-        <div class="signal">
-          <div class="signal-label">глубина</div>
-          <div class="signal-value">широкий охват <strong>CWE</strong>, активные проверки, <strong>OAST</strong>, не сводить результаты к «топ-10»</div>
+    <div v-click>
+      <div class="panel">
+        <div class="status accent">покрытие</div>
+        <div class="hero-line">стек, API и OAST</div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-label">стек</div>
+            <div class="signal-value"><strong>Web + SPA</strong> · <strong>HTTP + WebSocket</strong></div>
+          </div>
+          <div class="signal">
+            <div class="signal-label">API</div>
+            <div class="signal-value">REST / gRPC / SOAP (+ GraphQL где применимо)</div>
+          </div>
+          <div class="signal">
+            <div class="signal-label">глубина</div>
+            <div class="signal-value">широкий охват <strong>CWE</strong>, активные проверки, <strong>OAST</strong>, не сводить результаты к «топ-10»</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="panel">
-    <div class="status warning">прозрачность</div>
-    <div class="hero-line">без «чёрного ящика»</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">наблюдаемость</div>
-        <div class="signal-value">видно <strong>что</strong> делает сканер, <strong>какие</strong> запросы, <strong>почему</strong> сработала проверка / finding</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">принцип</div>
-        <div class="signal-value">DAST не должен быть непрозрачным «чёрным ящиком»</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status warning">прозрачность</div>
+      <div class="hero-line">без «чёрного ящика»</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">наблюдаемость</div>
+          <div class="signal-value">видно <strong>что</strong> делает сканер, <strong>какие</strong> запросы, <strong>почему</strong> сработала проверка / finding</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">принцип</div>
+          <div class="signal-value">DAST не должен быть непрозрачным «чёрным ящиком»</div>
+        </div>
       </div>
     </div>
   </div>
@@ -614,36 +641,45 @@ class: slide-dense
 -->
 
 ---
+class: slide-dense slide-vclick-reveal
+clicks: 3
+---
 
 # Сложная аутентификация и MFA
 
 <div class="grid-2-even">
-  <div class="panel">
-    <div class="status warning">1. Сложные сценарии</div>
-    <div class="hero-line">частично решаемая задача</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">реальность</div>
-        <div class="signal-value">SSO, OAuth, редиректы, client-side логика</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">подход</div>
-        <div class="signal-value">запись действий + replay · сценарии нужно поддерживать</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status warning">1. Сложные сценарии</div>
+      <div class="hero-line">частично решаемая задача</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">реальность</div>
+          <div class="signal-value">SSO, OAuth, редиректы, client-side логика</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">подход</div>
+          <div class="signal-value">запись действий + replay · сценарии нужно поддерживать</div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="panel">
-    <div class="status accent">2. MFA</div>
-    <div class="hero-line">внешние факторы</div>
-    <p>SMS / TOTP / push — зависимость от внешних систем и времени</p>
-    <div class="note">
-      <strong>Практика:</strong> bypass, сервисные аккаунты, mock 2FA, инжект токенов
+  <div v-click>
+    <div class="panel">
+      <div class="status accent">2. MFA</div>
+      <div class="hero-line">внешние факторы</div>
+      <p>SMS / TOTP / push — зависимость от внешних систем и времени</p>
+      <div class="note">
+        <strong>Практика:</strong> bypass, сервисные аккаунты, mock 2FA, инжект токенов
+      </div>
     </div>
   </div>
 </div>
 
-<div class="callout callout--key" style="margin-top: 0.75rem;">
-  <p>DAST работает там, где сценарий воспроизводим. MFA ломает воспроизводимость >> нужна отдельная стратегия.</p>
+<div v-click>
+  <div class="callout callout--key" style="margin-top: 0.75rem;">
+    <p>DAST работает там, где сценарий воспроизводим. MFA ломает воспроизводимость >> нужна отдельная стратегия.</p>
+  </div>
 </div>
 
 <!--
@@ -679,56 +715,53 @@ class: slide-dense
 -->
 
 ---
-class: slide-dense slide-19-split
+class: slide-dense slide-19-split slide-vclick-reveal
+clicks: 3
 ---
 
 # Кейс: «сканер почти ничего не находит»
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div
-    class="slide-19-text-stack"
-    v-motion
-    :initial="{ opacity: 0, y: 22 }"
-    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
-  >
-    <div class="panel">
-      <div class="status active">пилот</div>
-      <div class="hero-line">«Сканер почти ничего не находит»</div>
-      <div class="signal-list">
-        <div class="signal">
-          <div class="signal-label">контекст</div>
-          <div class="signal-value">реальный пилот у клиента</div>
+  <div class="slide-19-text-stack">
+    <div v-click>
+      <div class="panel">
+        <div class="status active">пилот</div>
+        <div class="hero-line">«Сканер почти ничего не находит»</div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-label">контекст</div>
+            <div class="signal-value">реальный пилот у клиента</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="panel">
-      <div class="status warning">почему</div>
-      <div class="hero-line">SPA + API, сканер на фронте</div>
-      <div class="signal-list">
-        <div class="signal">
-          <div class="signal-label">факт</div>
-          <div class="signal-value">OpenAPI нет — непонятно, где контракт и куда смотреть в backend</div>
+    <div v-click>
+      <div class="panel">
+        <div class="status warning">почему</div>
+        <div class="hero-line">SPA + API, сканер на фронте</div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-label">факт</div>
+            <div class="signal-value">OpenAPI нет — непонятно, где контракт и куда смотреть в backend</div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="panel">
-      <div class="status active">вывод</div>
-      <div class="hero-line">не «плохо ищет» — неясно, куда идти</div>
-      <div class="signal-list">
-        <div class="signal">
-          <div class="signal-label">суть</div>
-          <div class="signal-value">«Загрузите схему» — «У нас нет». Без карты приложения backend почти невидим</div>
+    <div v-click="3">
+      <div class="panel">
+        <div class="status active">вывод</div>
+        <div class="hero-line">не «плохо ищет» — неясно, куда идти</div>
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-label">суть</div>
+            <div class="signal-value">«Загрузите схему» — «У нас нет». Без карты приложения backend почти невидим</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="slide-side-figure" aria-hidden="true">
-    <div
-      class="slide-side-figure__motion"
-      v-motion
-      :initial="{ opacity: 0, x: 48 }"
-      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
-    >
+  <div v-click="3" class="slide-side-figure" aria-hidden="true">
+    <div class="slide-side-figure__motion">
       <img src="/119.png" alt="" loading="eager" />
     </div>
   </div>
@@ -828,63 +861,68 @@ class: title-cursor
 -->
 
 ---
-class: slide-dense
+class: slide-dense slide-vclick-reveal
+clicks: 2
 ---
 
 # Краулинг
 
 <div class="grid-2-even">
-  <div class="panel">
-    <div class="status accent">зачем</div>
-    <div class="hero-line">краулер определяет поверхность атаки</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">маршруты</div>
-        <div class="signal-value">находит реальные маршруты и эндпоинты</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status accent">зачем</div>
+      <div class="hero-line">краулер определяет поверхность атаки</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">маршруты</div>
+          <div class="signal-value">находит реальные маршруты и эндпоинты</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">запросы</div>
+          <div class="signal-value">генерирует реальные запросы</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">поведение</div>
+          <div class="signal-value">исследует поведение приложения</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">карта</div>
+          <div class="signal-value">строит карту сайта</div>
+        </div>
       </div>
-      <div class="signal">
-        <div class="signal-label">запросы</div>
-        <div class="signal-value">генерирует реальные запросы</div>
+      <div class="callout callout--key">
+        <p>качество сканирования почти всегда упирается в качество краулинга</p>
       </div>
-      <div class="signal">
-        <div class="signal-label">поведение</div>
-        <div class="signal-value">исследует поведение приложения</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">карта</div>
-        <div class="signal-value">строит карту сайта</div>
-      </div>
-    </div>
-    <div class="callout callout--key">
-      <p>качество сканирования почти всегда упирается в качество краулинга</p>
     </div>
   </div>
-  <div class="panel">
-    <div class="status active">эволюция</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">проблема</div>
-        <div class="signal-value">HTML-only · не видит JS</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status active">эволюция</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">проблема</div>
+          <div class="signal-value">HTML-only · не видит JS</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">реальность</div>
+          <div class="signal-value">SPA / client-side logic</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">эволюция</div>
+          <div class="signal-value">headless browser · выполнение JS</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">вызовы</div>
+          <div class="signal-value">state explosion · зацикливание</div>
+        </div>
       </div>
-      <div class="signal">
-        <div class="signal-label">реальность</div>
-        <div class="signal-value">SPA / client-side logic</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">эволюция</div>
-        <div class="signal-value">headless browser · выполнение JS</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">вызовы</div>
-        <div class="signal-value">state explosion · зацикливание</div>
-      </div>
+      <div class="note">>> краулер = симуляция пользователя</div>
     </div>
-    <div class="note">>> краулер = симуляция пользователя</div>
   </div>
 </div>
 
 <!--
-<!--
+
 Краулер — это то, из чего вообще складывается поверхность атаки для DAST: какие URL и эндпоинты существуют, какие запросы реально уходят в приложение, какая получается карта. Всё остальное — проверки, payload'ы, политики — работает только поверх этого слоя. Поэтому тезис на слайде справедливый: качество сканирования почти всегда упирается в качество краулинга.
 
 Слева — зачем он нужен. Справа — как менялась модель: от «паука по HTML» к SPA и клиентской логике, отсюда headless и исполнение JS, и отдельная цена — взрыв состояний и зацикливание. Итог внизу: краулер всё больше похож не на парсер страниц, а на симуляцию пользователя — потому что иначе просто нечего честно атаковать.
@@ -938,7 +976,6 @@ class: slide-dense slide-24-crawler-split
   </div>
 </div>
 
-<!--
 <!--
 Здесь не повторяем общую теорию, а смотрим на «типичный» краулер глазами его ограничений. Он заточен под классическую модель: линейные страницы и ссылки. В SPA состояние живёт в клиенте — без нормальной модели состояния сканер просто не знает, что уже открылось и что ещё доступно.
 
@@ -1075,7 +1112,7 @@ class: slide-dense
   </div>
 </div>
 
-<!--
+
 <!--
 Если на прошлом слайде мы говорили про ограничения, то здесь уже про требования к новому краулеру. Он должен работать не с абстрактным HTML, а с фронтендом как с живой системой — с действиями, событиями, состоянием и логикой интерфейса.
 
@@ -1086,83 +1123,89 @@ class: slide-dense
 
 
 ---
-class: slide-dense slide-fingerprint-air
+class: slide-dense slide-fingerprint-air slide-vclick-reveal
+clicks: 4
 ---
 
 # Редизайн: fingerprint состояния
 
-<div class="panel">
-  <div class="status active">мини-схема</div>
-  <div class="hero-line">не сравниваем страницу целиком — сравниваем состояние</div>
-
-  <div class="flow">
-    <span class="node">Page A</span>
-    <span class="arrow">>></span>
-    <span class="node">Extract anchors</span>
-    <span class="arrow">>></span>
-    <span class="node">Fingerprint A</span>
-    <span class="arrow">>></span>
-    <span class="node">Compare</span>
-    <span class="arrow">>></span>
-    <span class="node">Same / Different</span>
-  </div>
-
-  <div class="signal-list">
-    <div class="signal">
-      <div class="signal-label">старый подход</div>
-      <div class="signal-value">URL и сырой HTML дают слишком много шума и плохо отражают реальное состояние UI</div>
+<div v-click>
+  <div class="panel">
+    <div class="status active">мини-схема</div>
+    <div class="hero-line">не сравниваем страницу целиком — сравниваем состояние</div>
+    <div class="flow">
+      <span class="node">Page A</span>
+      <span class="arrow">>></span>
+      <span class="node">Extract anchors</span>
+      <span class="arrow">>></span>
+      <span class="node">Fingerprint A</span>
+      <span class="arrow">>></span>
+      <span class="node">Compare</span>
+      <span class="arrow">>></span>
+      <span class="node">Same / Different</span>
     </div>
-    <div class="signal">
-      <div class="signal-label">новый подход</div>
-      <div class="signal-value">извлекаем <strong>стабильные якоря</strong> и собираем из них fingerprint состояния</div>
-    </div>
-    <div class="signal">
-      <div class="signal-label">правило</div>
-      <div class="signal-value">если fingerprint различается по значимым признакам -> это <strong>новое состояние</strong></div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-label">старый подход</div>
+        <div class="signal-value">URL и сырой HTML дают слишком много шума и плохо отражают реальное состояние UI</div>
+      </div>
+      <div class="signal">
+        <div class="signal-label">новый подход</div>
+        <div class="signal-value">извлекаем <strong>стабильные якоря</strong> и собираем из них fingerprint состояния</div>
+      </div>
+      <div class="signal">
+        <div class="signal-label">правило</div>
+        <div class="signal-value">если fingerprint различается по значимым признакам -> это <strong>новое состояние</strong></div>
+      </div>
     </div>
   </div>
 </div>
-
 <div class="grid-2-even">
-  <div class="panel">
-    <div class="status warning">что не годится как опора</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">URL</div>
-        <div class="signal-value">разные экраны могут жить на одном адресе</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">HTML</div>
-        <div class="signal-value">ререндер и динамика ломают прямое сравнение</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">fuzzy match</div>
-        <div class="signal-value">может склеить экраны, которые на самом деле разные</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status warning">что не годится как опора</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">URL</div>
+          <div class="signal-value">разные экраны могут жить на одном адресе</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">HTML</div>
+          <div class="signal-value">ререндер и динамика ломают прямое сравнение</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">fuzzy match</div>
+          <div class="signal-value">может склеить экраны, которые на самом деле разные</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="panel">
-    <div class="status accent">что даёт fingerprint</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">дедупликация</div>
-        <div class="signal-value">не ходим по одному и тому же состоянию под разными масками</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">покрытие</div>
-        <div class="signal-value">не теряем действительно новые состояния приложения</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">эффект</div>
-        <div class="signal-value">меньше infinite crawl, больше реального покрытия</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status accent">что даёт fingerprint</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">дедупликация</div>
+          <div class="signal-value">не ходим по одному и тому же состоянию под разными масками</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">покрытие</div>
+          <div class="signal-value">не теряем действительно новые состояния приложения</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">эффект</div>
+          <div class="signal-value">меньше infinite crawl, больше реального покрытия</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="callout callout--key">
-  <p><strong>Ключевая мысль:</strong> краулеру нужно понять не насколько похожи страницы, а исследовано ли остояние или нет.</p>
+<div v-click>
+  <div class="callout callout--key">
+    <p><strong>Ключевая мысль:</strong> краулеру нужно понять не насколько похожи страницы, а исследовано ли состояние или нет.</p>
+  </div>
 </div>
 
 
@@ -1176,81 +1219,87 @@ class: slide-dense slide-fingerprint-air
 
 
 ---
-class: slide-dense slide-fingerprint-air slide-fingerprint-tight
+class: slide-dense slide-fingerprint-air slide-fingerprint-tight slide-vclick-reveal
+clicks: 4
 ---
 
 # Кнопку уже нажимали?
 
-<div class="panel">
-  <div class="status active">модель</div>
-  <div class="hero-line">смысл элемента на сайте, а не сырой HTML</div>
-
-  <div class="flow">
-    <span class="node">Element</span>
-    <span class="arrow">>></span>
-    <span class="node">Stable signals</span>
-    <span class="arrow">>></span>
-    <span class="node">Logical match</span>
-    <span class="arrow">>></span>
-    <span class="node">Skip / Explore</span>
-  </div>
-
-  <div class="signal-list">
-    <div class="signal">
-      <div class="signal-label">вопрос</div>
-      <div class="signal-value">новый контрол или тот же, что уже исследовали?</div>
+<div v-click>
+  <div class="panel">
+    <div class="status active">модель</div>
+    <div class="hero-line">смысл элемента на сайте, а не сырой HTML</div>
+    <div class="flow">
+      <span class="node">Element</span>
+      <span class="arrow">>></span>
+      <span class="node">Stable signals</span>
+      <span class="arrow">>></span>
+      <span class="node">Logical match</span>
+      <span class="arrow">>></span>
+      <span class="node">Skip / Explore</span>
     </div>
-    <div class="signal">
-      <div class="signal-label">цель</div>
-      <div class="signal-value"><strong>схлопывать</strong> одинаковые элементы при смене HTML, текста, контекста</div>
-    </div>
-    <div class="signal">
-      <div class="signal-label">риск</div>
-      <div class="signal-value"><strong>infinite crawl</strong> или потеря покрытия — тот же трейдофф, что в пункте про состояния</div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-label">вопрос</div>
+        <div class="signal-value">новый контрол или тот же, что уже исследовали?</div>
+      </div>
+      <div class="signal">
+        <div class="signal-label">цель</div>
+        <div class="signal-value"><strong>схлопывать</strong> одинаковые элементы при смене HTML, текста, контекста</div>
+      </div>
+      <div class="signal">
+        <div class="signal-label">риск</div>
+        <div class="signal-value"><strong>infinite crawl</strong> или потеря покрытия — тот же трейдофф, что в пункте про состояния</div>
+      </div>
     </div>
   </div>
 </div>
-
 <div class="grid-2-even">
-  <div class="panel">
-    <div class="status warning">что ломает наивный подход</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">динамика</div>
-        <div class="signal-value">reload меняет атрибуты, классы, стили, куски DOM</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">локаль</div>
-        <div class="signal-value">язык другой, контрол по смыслу тот же</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">контекст</div>
-        <div class="signal-value"><strong>login</strong> и в других частях приложения</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status warning">что ломает наивный подход</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">динамика</div>
+          <div class="signal-value">reload меняет атрибуты, классы, стили, куски DOM</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">локаль</div>
+          <div class="signal-value">язык другой, контрол по смыслу тот же</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">контекст</div>
+          <div class="signal-value"><strong>login</strong> и в других частях приложения</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="panel">
-    <div class="status accent">каким должно быть решение</div>
-    <div class="signal-list">
-      <div class="signal">
-        <div class="signal-label">устойчивость</div>
-        <div class="signal-value">признаки переживают reopen, сильный HTML-дрейф, новый контекст</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">гибкость</div>
-        <div class="signal-value">цвет, размер, сайдбар могут меняться — роль та же</div>
-      </div>
-      <div class="signal">
-        <div class="signal-label">ловушки</div>
-        <div class="signal-value">случайный <code>id</code>, <code>action</code>, хрупкие CSS/XPath</div>
+  <div v-click>
+    <div class="panel">
+      <div class="status accent">каким должно быть решение</div>
+      <div class="signal-list">
+        <div class="signal">
+          <div class="signal-label">устойчивость</div>
+          <div class="signal-value">признаки переживают reopen, сильный HTML-дрейф, новый контекст</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">гибкость</div>
+          <div class="signal-value">цвет, размер, сайдбар могут меняться — роль та же</div>
+        </div>
+        <div class="signal">
+          <div class="signal-label">ловушки</div>
+          <div class="signal-value">случайный <code>id</code>, <code>action</code>, хрупкие CSS/XPath</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="callout callout--key">
-  <p><strong>Ключевая мысль:</strong> совпал набор признаков — тот же логический контрол; не крутим проверку без нужды.</p>
+<div v-click>
+  <div class="callout callout--key">
+    <p><strong>Ключевая мысль:</strong> совпал набор признаков — тот же логический контрол; не крутим проверку без нужды.</p>
+  </div>
 </div>
 
 
@@ -1263,95 +1312,86 @@ class: slide-dense slide-fingerprint-air slide-fingerprint-tight
 -->
 
 ---
-class: slide-dense
+class: slide-dense slide-vclick-reveal
+clicks: 5
 ---
 
 # Профит краулера нового поколения
 
 <div class="crawler-bench-grid">
-  <div
-    class="crawler-bench-card"
-    v-motion
-    :initial="{ opacity: 0, y: 18 }"
-    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 70 } }"
-  >
-    <div class="crawler-bench-title">DVWA</div>
-    <div class="crawler-bench-main">
-      <span class="crawler-bench-score">13</span>
-      <span class="crawler-bench-badge crawler-bench-badge--delta">+1</span>
-    </div>
-    <div class="crawler-bench-tags">
-      <span class="crawler-bench-tag">XSS</span>
+  <div v-click>
+    <div class="crawler-bench-card">
+      <div class="crawler-bench-title">DVWA</div>
+      <div class="crawler-bench-main">
+        <span class="crawler-bench-score">13</span>
+        <span class="crawler-bench-badge crawler-bench-badge--delta">+1</span>
+      </div>
+      <div class="crawler-bench-tags">
+        <span class="crawler-bench-tag">XSS</span>
+      </div>
     </div>
   </div>
-  <div
-    class="crawler-bench-card"
-    v-motion
-    :initial="{ opacity: 0, y: 18 }"
-    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 130 } }"
-  >
-    <div class="crawler-bench-title">Juice Shop</div>
-    <div class="crawler-bench-main">
-      <span class="crawler-bench-score">6</span>
-      <span class="crawler-bench-badge crawler-bench-badge--new">NEW</span>
-    </div>
-    <div class="crawler-bench-tags">
-      <span class="crawler-bench-tag">SQLi</span>
-      <span class="crawler-bench-tag">SSRF</span>
-      <span class="crawler-bench-tag">CSRF</span>
-      <span class="crawler-bench-tag">XXE</span>
+  <div v-click>
+    <div class="crawler-bench-card">
+      <div class="crawler-bench-title">Juice Shop</div>
+      <div class="crawler-bench-main">
+        <span class="crawler-bench-score">6</span>
+        <span class="crawler-bench-badge crawler-bench-badge--new">NEW</span>
+      </div>
+      <div class="crawler-bench-tags">
+        <span class="crawler-bench-tag">SQLi</span>
+        <span class="crawler-bench-tag">SSRF</span>
+        <span class="crawler-bench-tag">CSRF</span>
+        <span class="crawler-bench-tag">XXE</span>
+      </div>
     </div>
   </div>
-  <div
-    class="crawler-bench-card"
-    v-motion
-    :initial="{ opacity: 0, y: 18 }"
-    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 190 } }"
-  >
-    <div class="crawler-bench-title">PyGoat</div>
-    <div class="crawler-bench-main">
-      <span class="crawler-bench-score">5</span>
-      <span class="crawler-bench-badge crawler-bench-badge--new">NEW</span>
-    </div>
-    <div class="crawler-bench-tags">
-      <span class="crawler-bench-tag">SQLi</span>
-      <span class="crawler-bench-tag">XSS</span>
-      <span class="crawler-bench-tag">OSCmd</span>
-      <span class="crawler-bench-tag">Deser</span>
+  <div v-click>
+    <div class="crawler-bench-card">
+      <div class="crawler-bench-title">PyGoat</div>
+      <div class="crawler-bench-main">
+        <span class="crawler-bench-score">5</span>
+        <span class="crawler-bench-badge crawler-bench-badge--new">NEW</span>
+      </div>
+      <div class="crawler-bench-tags">
+        <span class="crawler-bench-tag">SQLi</span>
+        <span class="crawler-bench-tag">XSS</span>
+        <span class="crawler-bench-tag">OSCmd</span>
+        <span class="crawler-bench-tag">Deser</span>
+      </div>
     </div>
   </div>
-  <div
-    class="crawler-bench-card"
-    v-motion
-    :initial="{ opacity: 0, y: 18 }"
-    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 250 } }"
-  >
-    <div class="crawler-bench-title">WebGoat</div>
-    <div class="crawler-bench-main">
-      <span class="crawler-bench-score">9</span>
-      <span class="crawler-bench-badge crawler-bench-badge--new">NEW</span>
-    </div>
-    <div class="crawler-bench-tags">
-      <span class="crawler-bench-tag">SQLi</span>
-      <span class="crawler-bench-tag">CSRF</span>
+  <div v-click>
+    <div class="crawler-bench-card">
+      <div class="crawler-bench-title">WebGoat</div>
+      <div class="crawler-bench-main">
+        <span class="crawler-bench-score">9</span>
+        <span class="crawler-bench-badge crawler-bench-badge--new">NEW</span>
+      </div>
+      <div class="crawler-bench-tags">
+        <span class="crawler-bench-tag">SQLi</span>
+        <span class="crawler-bench-tag">CSRF</span>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="panel crawler-bench-how">
-  <div class="status active">за счёт чего</div>
-  <div class="crawler-how-grid">
-    <div class="crawler-how-item">современные фреймворки для автоматизированного тестирования под капотом</div>
-    <div class="crawler-how-item">TypeScript + Python</div>
-    <div class="crawler-how-item">перехват событий</div>
-    <div class="crawler-how-item">динамический и статический поиск интерактивных элементов</div>
-    <div class="crawler-how-item">расширяемая поддержка любых фреймворков (из коробки: React, Next.js, Angular, Vue, Nuxt, Bitrix)</div>
-    <div class="crawler-how-item">ускорение загрузки страниц</div>
-    <div class="crawler-how-item">работа с Shadow Root</div>
-    <div class="crawler-how-item">несколько параллельных воркеров</div>
-    <div class="crawler-how-item">конфигурируемые лимиты и чёрные списки</div>
-    <div class="crawler-how-item">встроенная дедупликация элементов</div>
-    <div class="crawler-how-item crawler-how-item--muted">и многое другое…</div>
+<div v-click>
+  <div class="panel crawler-bench-how">
+    <div class="status active">за счёт чего</div>
+    <div class="crawler-how-grid">
+      <div class="crawler-how-item">современные фреймворки для автоматизированного тестирования под капотом</div>
+      <div class="crawler-how-item">TypeScript + Python</div>
+      <div class="crawler-how-item">перехват событий</div>
+      <div class="crawler-how-item">динамический и статический поиск интерактивных элементов</div>
+      <div class="crawler-how-item">расширяемая поддержка любых фреймворков (из коробки: React, Next.js, Angular, Vue, Nuxt, Bitrix)</div>
+      <div class="crawler-how-item">ускорение загрузки страниц</div>
+      <div class="crawler-how-item">работа с Shadow Root</div>
+      <div class="crawler-how-item">несколько параллельных воркеров</div>
+      <div class="crawler-how-item">конфигурируемые лимиты и чёрные списки</div>
+      <div class="crawler-how-item">встроенная дедупликация элементов</div>
+      <div class="crawler-how-item crawler-how-item--muted">и многое другое…</div>
+    </div>
   </div>
 </div>
 
@@ -1935,16 +1975,4 @@ class: title-cursor slide-manifest
 Если смотреть вперед, то направление движения уже видно довольно хорошо. Будущее DAST — это не просто сканер, а система, которая берет на себя все больший кусок цикла: от исследования до подтверждения и дальше до remediation.
 
 Если собрать все вместе, DAST — это прежде всего про реальную атакуемость. Но его эффективность определяется не только самим инструментом, а тем, насколько хорошо он встроен в процесс, насколько понимает систему и насколько способен переводить finding в fixing, а затем и в более автономные действия.
--->
-
----
-layout: full
----
-
-<div class="slide-final-poster">
-  <img src="/final.png" alt="" />
-</div>
-
-<!--
-На этом можно оставить аудиторию с простой мыслью. Без проверки работающей системы картина безопасности всегда остается неполной, а значит DAST — это не опция «на всякий случай», а важная часть современной AppSec-практики.
 -->
