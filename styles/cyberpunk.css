@@ -734,8 +734,38 @@ html, body, #app {
   align-items: center;
   justify-content: center;
   min-width: 0;
-  min-height: 0;
   width: 100%;
+  /* Резерв высоты (общий случай — как max-height у .slide-side-figure img); split-слайды переопределяют ниже */
+  min-height: min(58vh, 380px);
+}
+
+/* Слайд 2: резервируем высоту под картинку, чтобы motion не отрабатывал по «пустой» ячейке до load */
+.slidev-slide-content .slidev-layout.slide-dense.slide-2-split .slide-side-figure__motion {
+  min-height: min(52.8vh, 330px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-4-split .slide-side-figure__motion {
+  min-height: min(54vh, 360px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-5-split .slide-side-figure__motion {
+  min-height: min(52vh, 400px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-6-split .slide-side-figure__motion {
+  min-height: min(32vh, 220px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-19-split .slide-side-figure__motion {
+  min-height: min(70vh, 500px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-24-crawler-split .slide-24-framework .slide-side-figure__motion {
+  min-height: min(77vh, 674px);
+}
+
+.slidev-slide-content .slidev-layout.slide-dense.slide-37-h2f-split .slide-37-h2f-figure .slide-side-figure__motion {
+  min-height: min(62vh, 520px);
 }
 
 .slidev-slide-content .slidev-layout.slide-dense .slide-side-figure img {

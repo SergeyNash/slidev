@@ -59,7 +59,7 @@ class: slide-dense slide-2-split
     class="panel"
     v-motion
     :initial="{ opacity: 0, y: 22 }"
-    :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 70 } }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
   >
     <div class="status active">контекст</div>
     <div class="hero-line">атакуют работающее приложение — не репозиторий</div>
@@ -86,10 +86,10 @@ class: slide-dense slide-2-split
     <div
       class="slide-side-figure__motion"
       v-motion
-      :initial="{ opacity: 0, x: 36 }"
-      :enter="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 150 } }"
+      :initial="{ opacity: 0, x: 48 }"
+      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
     >
-      <img src="/2.png" alt="" />
+      <img src="/2.png" alt="" loading="eager" />
     </div>
   </div>
 </div>
@@ -128,7 +128,12 @@ class: slide-dense slide-4-split
 # Почему это критично сейчас
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div class="panel">
+  <div
+    class="panel"
+    v-motion
+    :initial="{ opacity: 0, y: 22 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+  >
     <div class="status warning">сдвиг в runtime</div>
     <div class="hero-line">без runtime-проверки безопасность остаётся гипотезой</div>
     <div class="signal-list">
@@ -151,7 +156,14 @@ class: slide-dense slide-4-split
     </div>
   </div>
   <div class="slide-side-figure" aria-hidden="true">
-    <img src="/4.png" alt="" />
+    <div
+      class="slide-side-figure__motion"
+      v-motion
+      :initial="{ opacity: 0, x: 48 }"
+      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+    >
+      <img src="/4.png" alt="" loading="eager" />
+    </div>
   </div>
 </div>
 
@@ -166,7 +178,12 @@ class: slide-dense slide-5-split
 # От SAST к DAST
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div class="slide-5-text-stack">
+  <div
+    class="slide-5-text-stack"
+    v-motion
+    :initial="{ opacity: 0, y: 22 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+  >
     <div class="panel">
       <div class="status warning">SAST</div>
       <div class="hero-line">почему недостаточно</div>
@@ -197,7 +214,14 @@ class: slide-dense slide-5-split
     </div>
   </div>
   <div class="slide-side-figure" aria-hidden="true">
-    <img src="/5.png" alt="" />
+    <div
+      class="slide-side-figure__motion"
+      v-motion
+      :initial="{ opacity: 0, x: 48 }"
+      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+    >
+      <img src="/5.png" alt="" loading="eager" />
+    </div>
   </div>
 </div>
 
@@ -212,7 +236,12 @@ class: slide-dense slide-6-split
 # Зачем нужен DAST
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div class="panel">
+  <div
+    class="panel"
+    v-motion
+    :initial="{ opacity: 0, y: 22 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+  >
     <div class="status active">ценность</div>
     <div class="hero-line">факты об атакуемости, не теория</div>
     <div class="signal-list">
@@ -227,7 +256,14 @@ class: slide-dense slide-6-split
     </div>
   </div>
   <div class="slide-side-figure" aria-hidden="true">
-    <img src="/6.png" alt="" />
+    <div
+      class="slide-side-figure__motion"
+      v-motion
+      :initial="{ opacity: 0, x: 48 }"
+      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+    >
+      <img src="/6.png" alt="" loading="eager" />
+    </div>
   </div>
 </div>
 
@@ -649,7 +685,12 @@ class: slide-dense slide-19-split
 # Кейс: «сканер почти ничего не находит»
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div class="slide-19-text-stack">
+  <div
+    class="slide-19-text-stack"
+    v-motion
+    :initial="{ opacity: 0, y: 22 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+  >
     <div class="panel">
       <div class="status active">пилот</div>
       <div class="hero-line">«Сканер почти ничего не находит»</div>
@@ -682,7 +723,14 @@ class: slide-dense slide-19-split
     </div>
   </div>
   <div class="slide-side-figure" aria-hidden="true">
-    <img src="/119.png" alt="" />
+    <div
+      class="slide-side-figure__motion"
+      v-motion
+      :initial="{ opacity: 0, x: 48 }"
+      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+    >
+      <img src="/119.png" alt="" loading="eager" />
+    </div>
   </div>
 </div>
 
@@ -850,7 +898,12 @@ class: slide-dense slide-24-crawler-split
 
 <div class="slide-24-crawler-center">
   <div class="slide-24-crawler-row">
-    <div class="panel">
+    <div
+      class="panel"
+      v-motion
+      :initial="{ opacity: 0, y: 22 }"
+      :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+    >
       <div class="status accent">типичный краулер</div>
       <div class="signal-list">
         <div class="signal">
@@ -873,7 +926,14 @@ class: slide-dense slide-24-crawler-split
       <div class="note">Раньше интернет был другим, а теперь мы не знаем, что это такое.</div>
     </div>
     <div class="slide-24-framework" aria-hidden="true">
-      <img src="/framework.png" alt="" />
+      <div
+        class="slide-side-figure__motion"
+        v-motion
+        :initial="{ opacity: 0, x: 48 }"
+        :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+      >
+        <img src="/framework.png" alt="" loading="eager" />
+      </div>
     </div>
   </div>
 </div>
@@ -965,7 +1025,12 @@ class: slide-dense
 # Что должен уметь динамический краулер
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div class="panel">
+  <div
+    class="panel"
+    v-motion
+    :initial="{ opacity: 0, y: 22 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+  >
     <div class="status active">ожидание</div>
     <div class="signal-list">
       <div class="signal">
@@ -999,7 +1064,14 @@ class: slide-dense
     </div>
   </div>
   <div class="slide-side-figure" aria-hidden="true">
-    <img src="/31.png" alt="" />
+    <div
+      class="slide-side-figure__motion"
+      v-motion
+      :initial="{ opacity: 0, x: 48 }"
+      :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+    >
+      <img src="/31.png" alt="" loading="eager" />
+    </div>
   </div>
 </div>
 
@@ -1197,7 +1269,12 @@ class: slide-dense
 # Профит краулера нового поколения
 
 <div class="crawler-bench-grid">
-  <div class="crawler-bench-card">
+  <div
+    class="crawler-bench-card"
+    v-motion
+    :initial="{ opacity: 0, y: 18 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 70 } }"
+  >
     <div class="crawler-bench-title">DVWA</div>
     <div class="crawler-bench-main">
       <span class="crawler-bench-score">13</span>
@@ -1207,7 +1284,12 @@ class: slide-dense
       <span class="crawler-bench-tag">XSS</span>
     </div>
   </div>
-  <div class="crawler-bench-card">
+  <div
+    class="crawler-bench-card"
+    v-motion
+    :initial="{ opacity: 0, y: 18 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 130 } }"
+  >
     <div class="crawler-bench-title">Juice Shop</div>
     <div class="crawler-bench-main">
       <span class="crawler-bench-score">6</span>
@@ -1220,7 +1302,12 @@ class: slide-dense
       <span class="crawler-bench-tag">XXE</span>
     </div>
   </div>
-  <div class="crawler-bench-card">
+  <div
+    class="crawler-bench-card"
+    v-motion
+    :initial="{ opacity: 0, y: 18 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 190 } }"
+  >
     <div class="crawler-bench-title">PyGoat</div>
     <div class="crawler-bench-main">
       <span class="crawler-bench-score">5</span>
@@ -1233,7 +1320,12 @@ class: slide-dense
       <span class="crawler-bench-tag">Deser</span>
     </div>
   </div>
-  <div class="crawler-bench-card">
+  <div
+    class="crawler-bench-card"
+    v-motion
+    :initial="{ opacity: 0, y: 18 }"
+    :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 28, delay: 250 } }"
+  >
     <div class="crawler-bench-title">WebGoat</div>
     <div class="crawler-bench-main">
       <span class="crawler-bench-score">9</span>
@@ -1553,7 +1645,12 @@ class: slide-dense slide-37-h2f-split
 
 <div class="slide-37-h2f-center">
   <div class="slide-37-h2f-row">
-    <div class="panel">
+    <div
+      class="panel"
+      v-motion
+      :initial="{ opacity: 0, y: 22 }"
+      :visible="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 60 } }"
+    >
       <div class="status active">эффект</div>
       <div class="signal-list">
         <div class="signal">
@@ -1574,7 +1671,14 @@ class: slide-dense slide-37-h2f-split
       </div>
     </div>
     <div class="slide-37-h2f-figure" aria-hidden="true">
-      <img src="/35.png" alt="" />
+      <div
+        class="slide-side-figure__motion"
+        v-motion
+        :initial="{ opacity: 0, x: 48 }"
+        :visible="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 120 } }"
+      >
+        <img src="/35.png" alt="" loading="eager" />
+      </div>
     </div>
   </div>
 </div>
