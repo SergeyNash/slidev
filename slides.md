@@ -55,7 +55,12 @@ class: slide-dense slide-2-split
 # Система, а не только код
 
 <div class="grid-2-even grid-2-even--with-figure">
-  <div class="panel">
+  <div
+    class="panel"
+    v-motion
+    :initial="{ opacity: 0, y: 22 }"
+    :enter="{ opacity: 1, y: 0, transition: { type: 'spring', stiffness: 280, damping: 26, delay: 70 } }"
+  >
     <div class="status active">контекст</div>
     <div class="hero-line">атакуют работающее приложение — не репозиторий</div>
     <div class="signal-list">
@@ -78,7 +83,14 @@ class: slide-dense slide-2-split
     </div>
   </div>
   <div class="slide-side-figure" aria-hidden="true">
-    <img src="/2.png" alt="" />
+    <div
+      class="slide-side-figure__motion"
+      v-motion
+      :initial="{ opacity: 0, x: 36 }"
+      :enter="{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 260, damping: 28, delay: 150 } }"
+    >
+      <img src="/2.png" alt="" />
+    </div>
   </div>
 </div>
 

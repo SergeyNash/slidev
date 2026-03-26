@@ -728,6 +728,16 @@ html, body, #app {
   min-height: 0;
 }
 
+/* Внутренний обёртка под v-motion: transform на flex-ячейке (.slide-side-figure) даёт нестабильный эффект */
+.slidev-slide-content .slidev-layout.slide-dense .slide-side-figure__motion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+}
+
 .slidev-slide-content .slidev-layout.slide-dense .slide-side-figure img {
   max-width: 100%;
   width: auto;
