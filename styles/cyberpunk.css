@@ -77,6 +77,88 @@
   }
 }
 
+@keyframes cover-matrix-slash {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 56px;
+  }
+}
+
+@keyframes cover-glitch-cyan {
+  0%,
+  88%,
+  100% {
+    transform: translate(0);
+    opacity: 0.85;
+    clip-path: inset(0 0 0 0);
+  }
+  89% {
+    transform: translate(-3px, 1px);
+    opacity: 0.95;
+    clip-path: inset(8% 0 72% 0);
+  }
+  90% {
+    transform: translate(4px, -1px);
+    clip-path: inset(38% 0 38% 0);
+  }
+  91% {
+    transform: translate(-2px, 2px);
+    clip-path: inset(62% 0 12% 0);
+  }
+  92% {
+    transform: translate(2px, -2px);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes cover-glitch-magenta {
+  0%,
+  86%,
+  100% {
+    transform: translate(0);
+    opacity: 0.8;
+    clip-path: inset(0 0 0 0);
+  }
+  87% {
+    transform: translate(3px, -2px);
+    clip-path: inset(22% 0 58% 0);
+  }
+  88% {
+    transform: translate(-4px, 1px);
+    clip-path: inset(55% 0 25% 0);
+  }
+  89% {
+    transform: translate(1px, 3px);
+    clip-path: inset(0 45% 0 0);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes cover-glitch-scan {
+  0%,
+  100% {
+    transform: skewX(0deg) translateX(0);
+    filter: hue-rotate(0deg);
+  }
+  93% {
+    transform: skewX(-0.8deg) translateX(-1px);
+    filter: hue-rotate(12deg);
+  }
+  94% {
+    transform: skewX(0.6deg) translateX(2px);
+    filter: hue-rotate(-8deg);
+  }
+  95% {
+    transform: skewX(0) translateX(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
 @keyframes section-h1-in {
   from {
     opacity: 0;
@@ -1737,6 +1819,133 @@ table.map-table--q2 {
 
 .cover-provocative__title span:last-child {
   color: var(--danger);
+}
+
+/* Слайд 2: матрица / слэши + глитч по строкам (skew на строках — не трогаем translateY у заголовка) */
+.cover-provocative__title--matrix {
+  isolation: isolate;
+}
+
+.cover-provocative__title--matrix .cover-provocative__title-line {
+  transform: skewX(-2.2deg);
+  transform-origin: left center;
+}
+
+.cover-provocative__title--matrix::before {
+  content: "";
+  position: absolute;
+  inset: -12% -8% -12% -18%;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(
+      118deg,
+      transparent 0,
+      transparent 5px,
+      rgba(0, 212, 255, 0.11) 5px,
+      rgba(0, 212, 255, 0.11) 6px,
+      transparent 6px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      -72deg,
+      transparent 0,
+      transparent 8px,
+      rgba(191, 90, 242, 0.06) 8px,
+      rgba(191, 90, 242, 0.06) 9px
+    );
+  background-size: 100% 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: cover-matrix-slash 10s linear infinite;
+  opacity: 0.9;
+}
+
+.cover-provocative__title-line {
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+.cover-provocative__title-line:nth-child(1) .cover-provocative__glitch::before {
+  animation-delay: 0s;
+}
+
+.cover-provocative__title-line:nth-child(2) .cover-provocative__glitch::before {
+  animation-delay: 0.35s;
+}
+
+.cover-provocative__title-line:nth-child(2) .cover-provocative__glitch::after {
+  animation-delay: 0.2s;
+}
+
+.cover-provocative__title-line:nth-child(3) .cover-provocative__glitch::before {
+  animation-delay: 0.7s;
+}
+
+.cover-provocative__title-line:nth-child(3) .cover-provocative__glitch::after {
+  animation-delay: 0.55s;
+}
+
+.cover-provocative__glitch {
+  position: relative;
+  display: inline-block;
+  text-shadow:
+    0 0 20px rgba(0, 212, 255, 0.25),
+    0 0 48px rgba(191, 90, 242, 0.12);
+  animation: cover-glitch-scan 4.2s ease-in-out infinite;
+}
+
+.cover-provocative__glitch::before,
+.cover-provocative__glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  white-space: nowrap;
+  font: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.cover-provocative__glitch::before {
+  z-index: -1;
+  color: rgba(0, 212, 255, 0.92);
+  text-shadow:
+    -1px 0 rgba(0, 212, 255, 0.9),
+    1px 0 rgba(255, 45, 120, 0.35);
+  mix-blend-mode: screen;
+  animation: cover-glitch-cyan 3.8s steps(1, end) infinite;
+}
+
+.cover-provocative__title-line:nth-child(1) .cover-provocative__glitch {
+  color: var(--primary);
+}
+
+.cover-provocative__title-line:nth-child(2) .cover-provocative__glitch {
+  color: #eef7ff;
+}
+
+.cover-provocative__title-line:nth-child(3) .cover-provocative__glitch {
+  color: var(--danger);
+}
+
+.cover-provocative__title-line:nth-child(3) .cover-provocative__glitch::after {
+  color: rgba(255, 45, 120, 0.88);
+}
+
+.cover-provocative__title-line:nth-child(1) .cover-provocative__glitch::after,
+.cover-provocative__title-line:nth-child(2) .cover-provocative__glitch::after {
+  color: rgba(191, 90, 242, 0.85);
+}
+
+.cover-provocative__glitch::after {
+  z-index: -2;
+  mix-blend-mode: screen;
+  animation: cover-glitch-magenta 4.4s steps(1, end) infinite;
 }
 
 .cover-provocative__shade {

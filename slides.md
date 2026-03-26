@@ -15,10 +15,7 @@ defaults:
 layout: full
 ---
 
-<div class="slide-zero-poster">
-  <!-- object: в SVG подгружается @font-face для «Сергей Синяков»; при <img> шрифты не работают -->
-  <object class="slide-zero-poster__object" type="image/svg+xml" data="/0.svg" aria-label=""></object>
-</div>
+<SlideZeroPoster />
 
 ---
 layout: full
@@ -30,10 +27,16 @@ class: deck-cover deck-cover-provocative
   <div class="cover-provocative__shade" aria-hidden="true"></div>
   <div class="cover-provocative__glow" aria-hidden="true"></div>
 
-  <div class="cover-provocative__title">
-    <span>DAST</span>
-    <span>или не DAST,</span>
-    <span>вот в чём вопрос</span>
+  <div class="cover-provocative__title cover-provocative__title--matrix">
+    <span class="cover-provocative__title-line">
+      <span class="cover-provocative__glitch" data-text="DAST">DAST</span>
+    </span>
+    <span class="cover-provocative__title-line">
+      <span class="cover-provocative__glitch" data-text="или не DAST,">или не DAST,</span>
+    </span>
+    <span class="cover-provocative__title-line">
+      <span class="cover-provocative__glitch" data-text="вот в чём вопрос">вот в чём вопрос</span>
+    </span>
   </div>
 </div>
 
