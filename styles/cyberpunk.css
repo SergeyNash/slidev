@@ -270,12 +270,15 @@ html, body, #app {
 }
 
 .slidev-slide-content .slidev-layout.full > .slide-zero-poster img,
+.slidev-slide-content .slidev-layout.full > .slide-zero-poster .slide-zero-poster__object,
 .slidev-slide-content .slidev-layout.full > .slide-final-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
+  border: 0;
+  pointer-events: none;
 }
 
 /* GIF на обычном фоне дэка (сетка, градиент) — центр, лёгкая рамка */

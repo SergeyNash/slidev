@@ -16,7 +16,8 @@ layout: full
 ---
 
 <div class="slide-zero-poster">
-  <img src="/slide00.png" alt="" />
+  <!-- object: в SVG подгружается @font-face для «Сергей Синяков»; при <img> шрифты не работают -->
+  <object class="slide-zero-poster__object" type="image/svg+xml" data="/0.svg" aria-label=""></object>
 </div>
 
 ---
