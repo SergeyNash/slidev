@@ -26,8 +26,10 @@ import cicdSvg from '../assets/cicd.svg?raw'
   position: relative;
   width: 100%;
   margin-top: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.5rem;
+  margin-left: -0.2rem;
+  margin-right: -0.2rem;
+  padding-left: 0.45rem;
+  padding-right: 0.35rem;
   box-sizing: border-box;
   color: #fff;
   font-family: 'Inter', system-ui, sans-serif;
@@ -38,7 +40,7 @@ import cicdSvg from '../assets/cicd.svg?raw'
 /* схема слева, легенда справа; легенда по вертикали по центру относительно SVG */
 .ptbb-main {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) min(32cqi, 300px);
+  grid-template-columns: minmax(0, 1fr) min(38cqi, 340px);
   gap: 0.5rem 0.65rem;
   align-items: center;
   width: 100%;
@@ -52,7 +54,7 @@ import cicdSvg from '../assets/cicd.svg?raw'
 
 .ptbb-stage {
   width: 100%;
-  max-width: min(62.5cqi, 621px);
+  max-width: min(66cqi, 660px);
   line-height: 0;
 }
 
@@ -76,21 +78,21 @@ import cicdSvg from '../assets/cicd.svg?raw'
 .ptbb-legend-panel :deep(.ptbb-legend) {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.2rem 0;
-  font-size: 0.62rem;
-  line-height: 1.25;
+  gap: 0.26rem 0;
+  font-size: 0.88rem;
+  line-height: 1.32;
   color: var(--text, #ccd8e8);
 }
 
 .ptbb-legend-panel :deep(.ptbb-legend-row) {
-  gap: 0.3rem;
+  gap: 0.4rem;
   align-items: flex-start;
 }
 
 .ptbb-legend-panel :deep(.ptbb-legend-num) {
-  width: 1rem;
-  height: 1rem;
-  font-size: 0.52rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: 0.72rem;
   margin-top: 0.04em;
 }
 
@@ -100,11 +102,11 @@ import cicdSvg from '../assets/cicd.svg?raw'
 
 @supports not (container-type: inline-size) {
   .ptbb-main {
-    grid-template-columns: minmax(0, 1fr) min(32%, 280px);
+    grid-template-columns: minmax(0, 1fr) min(38%, 330px);
   }
 
   .ptbb-stage {
-    max-width: min(62.5%, 621px);
+    max-width: min(66%, 660px);
   }
 }
 
@@ -122,18 +124,21 @@ import cicdSvg from '../assets/cicd.svg?raw'
 
   .ptbb-legend-panel :deep(.ptbb-legend) {
     grid-template-columns: 1fr 1fr;
-    font-size: 0.65rem;
-    gap: 0.25rem 0.75rem;
+    font-size: 0.9rem;
+    gap: 0.3rem 0.75rem;
   }
 }
 
 @media (max-width: 720px) {
   .ptbb-stage {
-    max-width: min(90cqi, 621px);
+    max-width: min(92cqi, 660px);
   }
 
   .ptbb-root {
-    padding-left: 0.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0.35rem;
+    padding-right: 0.3rem;
   }
 
   .ptbb-legend-panel :deep(.ptbb-legend) {
