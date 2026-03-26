@@ -1230,6 +1230,117 @@ html, body, #app {
   animation: section-p-in 0.65s cubic-bezier(0.2, 0.9, 0.2, 1) 0.28s both;
 }
 
+/* «Вывод»: финальный манифест — без панели, плакатный текст + теги */
+.slidev-slide-content .slidev-layout.slide-manifest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem 1rem 1.25rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest h1 {
+  margin-bottom: clamp(0.75rem, 2.5vw, 1.35rem);
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(94vw, 44rem);
+  margin: 0 auto;
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest::before {
+  content: "";
+  position: absolute;
+  inset: -18% -8% -22%;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 45%, rgba(0, 212, 255, 0.07), transparent 62%),
+    radial-gradient(ellipse 50% 40% at 72% 58%, rgba(191, 90, 242, 0.06), transparent 55%);
+  pointer-events: none;
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__lead {
+  margin: 0 0 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.78rem, 1.55vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(238, 247, 255, 0.72);
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__statement {
+  margin: 0 0 clamp(1.35rem, 3.5vw, 2rem);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 3.8vw, 2.35rem);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #eef7ff;
+  text-shadow:
+    0 0 40px rgba(0, 212, 255, 0.12),
+    0 0 80px rgba(191, 90, 242, 0.06);
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__hl {
+  font-weight: 800;
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__hl--primary {
+  color: var(--primary);
+  text-shadow:
+    0 0 24px rgba(0, 212, 255, 0.45),
+    0 0 48px rgba(0, 212, 255, 0.15);
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__hl--accent {
+  color: var(--accent);
+  text-shadow:
+    0 0 24px rgba(191, 90, 242, 0.42),
+    0 0 52px rgba(191, 90, 242, 0.14);
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__hl--danger {
+  color: var(--danger);
+  text-shadow:
+    0 0 24px rgba(255, 45, 120, 0.4),
+    0 0 50px rgba(255, 45, 120, 0.12);
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+}
+
+.slidev-slide-content .slidev-layout.slide-manifest .manifest__tag {
+  display: inline-block;
+  padding: 0.42rem 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.68rem, 1.35vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(238, 247, 255, 0.92);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 6px;
+  background: linear-gradient(
+    165deg,
+    rgba(0, 212, 255, 0.08) 0%,
+    rgba(4, 8, 15, 0.55) 45%,
+    rgba(191, 90, 242, 0.06) 100%
+  );
+  box-shadow:
+    0 0 18px rgba(0, 212, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
 .slidev-slide-content .slidev-layout h2 {
   font-size: 1.1em;
   font-weight: 700;
