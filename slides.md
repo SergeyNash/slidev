@@ -440,8 +440,8 @@ clicks: 4
 -->
 
 ---
-class: slide-dense slide-vclick-reveal
-clicks: 3
+class: slide-dense slide-vclick-reveal slide-problems-dast-finale
+clicks: 4
 ---
 
 # Проблемы классического DAST
@@ -488,6 +488,13 @@ clicks: 3
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div v-click class="slide-problems-dast-overlay">
+  <div class="slide-problems-dast-overlay__inner">
+    <div class="slide-problems-dast-overlay__title">ТОЧНО НЕ DAST</div>
+    <div class="slide-problems-dast-overlay__emoji" aria-hidden="true">😭</div>
   </div>
 </div>
 
@@ -641,8 +648,8 @@ clicks: 3
 -->
 
 ---
-class: slide-dense slide-vclick-reveal
-clicks: 3
+class: slide-dense slide-vclick-reveal slide-dast-affirm-finale
+clicks: 4
 ---
 
 # Сложная аутентификация и MFA
@@ -679,6 +686,13 @@ clicks: 3
 <div v-click>
   <div class="callout callout--key" style="margin-top: 0.75rem;">
     <p>DAST работает там, где сценарий воспроизводим. MFA ломает воспроизводимость >> нужна отдельная стратегия.</p>
+  </div>
+</div>
+
+<div v-click class="slide-dast-affirm-overlay">
+  <div class="slide-dast-affirm-overlay__inner">
+    <div class="slide-dast-affirm-overlay__title">ТОЧНО DAST</div>
+    <div class="slide-dast-affirm-overlay__emoji" aria-hidden="true">💕</div>
   </div>
 </div>
 

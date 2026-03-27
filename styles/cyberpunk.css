@@ -1769,6 +1769,73 @@ html, body, #app {
   transform: none !important;
 }
 
+/* слайды 13 / 18: корень для полноэкранного финального оверлея */
+.slidev-slide-content .slidev-layout.slide-problems-dast-finale,
+.slidev-slide-content .slidev-layout.slide-dast-affirm-finale {
+  position: relative;
+  min-height: 100%;
+}
+
+.slide-problems-dast-overlay,
+.slide-dast-affirm-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 10, 18, 0.9);
+  backdrop-filter: blur(4px);
+  padding: clamp(1rem, 4vw, 2.5rem);
+}
+
+.slide-problems-dast-overlay__inner,
+.slide-dast-affirm-overlay__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  text-align: center;
+}
+
+.slide-problems-dast-overlay__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(1.85rem, 7.2vw, 4.1rem);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-shadow: 0 0 28px rgba(0, 212, 255, 0.42);
+}
+
+.slide-dast-affirm-overlay__title {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: clamp(1.85rem, 7.2vw, 4.1rem);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow:
+    0 0 26px rgba(191, 90, 242, 0.45),
+    0 0 48px rgba(255, 105, 180, 0.22);
+}
+
+.slide-problems-dast-overlay__emoji,
+.slide-dast-affirm-overlay__emoji {
+  font-size: clamp(2.6rem, 10vw, 5.2rem);
+  line-height: 1;
+}
+
+#slide-content .slidev-layout.slide-problems-dast-finale.slide-vclick-reveal .slide-problems-dast-overlay.slidev-vclick-hidden,
+.slidev-slide-content .slidev-layout.slide-problems-dast-finale.slide-vclick-reveal .slide-problems-dast-overlay.slidev-vclick-hidden,
+#slide-content .slidev-layout.slide-dast-affirm-finale.slide-vclick-reveal .slide-dast-affirm-overlay.slidev-vclick-hidden,
+.slidev-slide-content .slidev-layout.slide-dast-affirm-finale.slide-vclick-reveal .slide-dast-affirm-overlay.slidev-vclick-hidden {
+  transform: none !important;
+}
+
 /* slide-problems-classic: обёртки v-click в сетке и снизу */
 .slide-problems-classic .grid-2-even > div:has(> .panel) {
   min-width: 0;
